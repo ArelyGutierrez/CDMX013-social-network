@@ -8,11 +8,14 @@ export const Register = () => {
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
 
+  inputEmail.textContent = 'Email';
+  inputPass.textContent = 'Password';
   button.textContent = 'Crear cuenta';
   buttonBack.textContent = 'Regresa';
   title.textContent = 'Registro de nueva cuenta';
+
   button.addEventListener('click', () => {
-    onNavigate('/');
+    onNavigate('/login');
   });
   buttonBack.addEventListener('click', () => {
     onNavigate('/');
