@@ -141,7 +141,10 @@ align-items: center;
 };
 /*Fin pagina login*/
 
+/*media query*/
+@media  screen and (min-width: 1024px){
 
+}
 
 
 

@@ -1,4 +1,6 @@
 import { onNavigate } from '../main.js';
+import { verify } from ".../lib/auth.js";
+import { on } from 'combined-stream';
 
 export const Login = () => {
   const divdos = document.createElement('div');
@@ -38,7 +40,21 @@ export const Login = () => {
   inputPasw.className = 'inputPasw';
   paragraphReg.className = 'paragraphReg';
   buttonRegisterReturn.className = 'buttonRegisterReturn';
-
+  
+  buttonLoginStart.addEventListener('click', () => {
+      verify(inputMail.value, inputPasw.value)
+        .then((userCredential) => {
+          // Signed in
+          onNavigate('/wall');
+          const user = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log('Error mensaje');
+        });
+    });
   buttonLoginStart.addEventListener('click', () => {
     console.log(buttonEmail.value);
     onNavigate('/wall');
