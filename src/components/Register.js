@@ -1,4 +1,5 @@
 import { onNavigate } from '../main.js';
+import { newUser } from '../lib/auth.js';
 
 export const Register = () => {
   const div = document.createElement('div');
@@ -42,7 +43,20 @@ export const Register = () => {
   hrefLogin.className = 'hrefLogin';
 
   buttonRegisterL.addEventListener('click', () => {
-    onNavigate('/login');
+    newUser(inputEmail.value, inputPass.value).then((userCredential) => {
+      // Signed in
+      onNavigate('/login');
+      const user = userCredential.user;
+      console.log(user);
+      // ...
+    })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        console.log('nel carnal');
+        // ..
+      });
   });
   buttonBack.addEventListener('click', () => {
     onNavigate('/');
