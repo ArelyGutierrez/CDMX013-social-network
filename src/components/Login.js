@@ -1,8 +1,9 @@
 import { onNavigate } from '../main.js';
 
 export const Login = () => {
+  const divdos = document.createElement('div');
   const div = document.createElement('div');
-  const titleLogin = document.createElement('h2');
+  const tittleLogin = document.createElement('h2');
   const buttonEmail = document.createElement('button');
   const buttonPass = document.createElement('button');
   const buttonGithub = document.createElement('button');
@@ -13,19 +14,20 @@ export const Login = () => {
   const paragraphReg = document.createElement('p');
   const buttonRegisterReturn = document.createElement('href');
 
-  titleLogin.textContent = 'Iniciar Sesión';
+  tittleLogin.textContent = 'Iniciar Sesión';
   buttonEmail.textContent = 'Iniciar Sesión con Google';
   buttonPass.textContent = 'Iniciar Sesión con Twitter';
   buttonGithub.textContent = 'Iniciar Sesión con GitHub';
   buttonLoginStart.textContent = 'Iniciar sesión';
   paragraphLogin.textContent = '____________o____________';
-  inputMail.textContent = 'Email';
-  inputPasw.textContent = 'Password';
+  inputMail.placeholder = 'Email';
+  inputPasw.placeholder = 'Password';
   paragraphReg.textContent = '¿No tienes una cuenta?';
   buttonRegisterReturn.textContent = 'Registrate';
 
+  divdos.className = 'divLogin';
   div.className = 'divWelcome';
-  titleLogin.className = 'titleLogin';
+  tittleLogin.className = 'tittleLogin';
   buttonLoginStart.className = 'buttonLogin';
   buttonEmail.className = 'buttonEmail';
   buttonPass.className = 'buttonPass';
@@ -45,7 +47,7 @@ export const Login = () => {
     onNavigate('/register');
   });
 
-  div.append(titleLogin, buttonEmail, buttonPass, buttonGithub, paragraphLogin, inputMail, inputPasw, buttonLoginStart, paragraphReg, buttonRegisterReturn);
+  div.append(tittleLogin, buttonEmail, buttonPass, buttonGithub, paragraphLogin, inputMail, inputPasw, buttonLoginStart, paragraphReg, buttonRegisterReturn);
 
   return div;
 };
