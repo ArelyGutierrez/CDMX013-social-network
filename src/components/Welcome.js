@@ -10,7 +10,7 @@ export const Welcome = () => {
   buttonLogin.textContent = 'Inicia Sesión';
   paragraphWelcome.textContent = '¿No tienes cuenta?';
   buttonRegister.textContent = 'Registrate';
-  title.textContent = 'Feel the magic of simply';
+  title.textContent = 'Rápido. Delicioso. Bueno';
 
   div.className = 'divWelcome';
   title.className = 'titleWelcome';
