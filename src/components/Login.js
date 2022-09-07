@@ -20,7 +20,7 @@ export const Login = () => {
   inputPass.className = 'inputPass';
 
   buttonLogin.addEventListener('click', () => {
-    console.log(inputEmail.value);
+    // console.log(inputEmail.value);
     onNavigate('/wall');
   });
   buttonBack.addEventListener('click', () => {
