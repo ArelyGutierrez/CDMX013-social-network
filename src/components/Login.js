@@ -1,4 +1,5 @@
 import { onNavigate } from '../main.js';
+import { verify } from '../lib/auth.js';
 
 export const Login = () => {
   const div = document.createElement('div');
@@ -20,8 +21,18 @@ export const Login = () => {
   inputPass.className = 'inputPass';
 
   buttonLogin.addEventListener('click', () => {
-    console.log(inputEmail.value);
-    onNavigate('/wall');
+    verify(inputEmail.value, inputPass.value)
+      .then((userCredential) => {
+        // Signed in
+        onNavigate('/wall');
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('Error mensaje');
+      });
   });
   buttonBack.addEventListener('click', () => {
     onNavigate('/');
