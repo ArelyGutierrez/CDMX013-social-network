@@ -1,4 +1,5 @@
 import { onNavigate } from '../main.js';
+import { verify } from '../lib/auth.js';
 
 export const Login = () => {
   const divdos = document.createElement('div');
@@ -40,9 +41,20 @@ export const Login = () => {
   buttonRegisterReturn.className = 'buttonRegisterReturn';
 
   buttonLoginStart.addEventListener('click', () => {
-    console.log(buttonEmail.value);
-    onNavigate('/wall');
+    verify(inputMail.value, inputPasw.value)
+      .then((userCredential) => {
+        // Signed in
+        onNavigate('/wall');
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('Error mensaje');
+      });
   });
+  console.log(buttonEmail.value);
   buttonRegisterReturn.addEventListener('click', () => {
     onNavigate('/register');
   });
