@@ -37,7 +37,7 @@ export const Login = () => {
   inputMail.className = 'inputMail';
   inputPasw.className = 'inputPasw';
   buttonLoginStart.className = 'buttonLogin';
-  divtres.className = 'errorInicioS';
+  divtres.className = 'errorMessagesR';
   paragraphReg.className = 'paragraphReg';
   buttonRegisterReturn.className = 'buttonRegisterReturn';
 

@@ -4,12 +4,14 @@ import { newUser } from '../lib/auth.js';
 export const Register = () => {
   const div = document.createElement('div');
   const containerBack = document.createElement('button');
+  const containerContent = document.createElement('div');
   const headerRegister = document.createElement('p');
   const title = document.createElement('h2');
   const buttonRegisterL = document.createElement('button');
   const inputUser = document.createElement('input');
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
+  const errorMessageRegister = document.createElement('div'); // error messages
   const buttonBack = document.createElement('button');
   const termsLegend = document.createElement('p');
   const cointenerQuestion = document.createElement('div');
@@ -20,14 +22,15 @@ export const Register = () => {
   headerRegister.textContent = 'Bienvenida';
   title.textContent = 'Crea tu cuenta';
   inputUser.placeholder = 'Usuario';
-  inputEmail.placeholder = 'Email';
+  inputEmail.placeholder = 'Correo electrónico';
   inputPass.placeholder = 'Contraseña';
   buttonRegisterL.textContent = 'Registrarse';
+  errorMessageRegister.textContent = ''; // si hay error lo despliega aquí
   termsLegend.textContent = 'Al dar click en Registrarse usted acepta nuestros Términos y Condiciones';
   paragraph2.textContent = '¿No tienes cuenta?';
   hrefLogin.textContent = 'Inicia sesión';
 
-  div.className = 'divCenter';
+  containerContent.className = 'divCenterR';
   containerBack.className = 'cointenerBack';
   buttonBack.className = 'buttonBack';
   containerBack.className = 'containerBack';
@@ -36,25 +39,39 @@ export const Register = () => {
   inputUser.className = 'inputRegister';
   inputEmail.className = 'inputRegister';
   inputPass.className = 'inputRegister';
+  errorMessageRegister.className = 'errorMessagesR'; // errores
   buttonRegisterL.className = 'buttonRegisterL';
   termsLegend.className = 'termsLegend';
   cointenerQuestion.className = 'conteinerQuestion';
   paragraph2.className = 'paragraph2';
   hrefLogin.className = 'hrefLogin';
 
+  inputPass.type = 'password';
+
   buttonRegisterL.addEventListener('click', () => {
     newUser(inputEmail.value, inputPass.value).then((userCredential) => {
       // Signed in
       onNavigate('/login');
       const user = userCredential.user;
-      console.log(user);
+      //  console.log(user);
       // ...
     })
       .catch((error) => {
-        console.log(error);
-        // ..
+        /*         const errorCode = error.code;
+        const errorMessage = error.message; */
+        // console.log(errorMessage);
+        if (inputEmail.value === '' || inputEmail.value === '' || inputPass.value === '') {
+          errorMessageRegister.innerHTML = 'Llena los campos requeridos';
+        } else if (error.code === 'auth/email-already-in-use') {
+          errorMessageRegister.innerHTML = 'Ya existe una cuenta con la dirección de correo electrónico dada.'; // alert('The password is too weak.');
+        } else if (error.code === 'auth/invalid-email') {
+          errorMessageRegister.innerHTML = 'Dirección de correo electrónico no válida';
+        } else if (error.code === 'auth/weak-password') {
+          errorMessageRegister.innerHTML = 'Introduce al menos 6 caracteres de contraseña';
+        }
       });
   });
+
   buttonBack.addEventListener('click', () => {
     onNavigate('/');
   });
@@ -64,7 +81,8 @@ export const Register = () => {
 
   containerBack.append(buttonBack, headerRegister);
   cointenerQuestion.append(paragraph2, hrefLogin);
-  div.append(containerBack, title, inputUser, inputEmail, inputPass, buttonRegisterL, termsLegend, cointenerQuestion);
+  containerContent.append(title, inputUser, inputEmail, inputPass, errorMessageRegister, buttonRegisterL, termsLegend, cointenerQuestion);
+  div.append(containerBack, containerContent);
 
   return div;
 };
