@@ -2,8 +2,11 @@ import { onNavigate } from '../main.js';
 import { verify } from '../lib/auth.js';
 
 export const Login = () => {
-  const divdos = document.createElement('div');
+  const containerContentL = document.createElement('div');
   const div = document.createElement('div');
+  const containerBackL = document.createElement('div');
+  const headerLogin = document.createElement('p');
+  const buttonBackL = document.createElement('img');
   const tittleLogin = document.createElement('h2');
   const buttonGoogle = document.createElement('button');
   const buttonTwitter = document.createElement('button');
@@ -16,6 +19,8 @@ export const Login = () => {
   const buttonRegisterReturn = document.createElement('href');
   const divtres = document.createElement('div');
 
+  buttonBackL.src = './images/arrowBack.png';
+  headerLogin.textContent = 'Bienvenida';
   tittleLogin.textContent = 'Iniciar Sesión';
   buttonGoogle.textContent = 'Iniciar Sesión con Google';
   buttonTwitter.textContent = 'Iniciar Sesión con Twitter';
@@ -27,8 +32,11 @@ export const Login = () => {
   paragraphReg.textContent = '¿No tienes una cuenta?';
   buttonRegisterReturn.textContent = 'Registrate';
 
-  divdos.className = 'divLogin';
-  div.className = 'divCenter';
+  containerContentL.className = 'divLogin';
+  containerContentL.className = 'divCenterL';
+  containerBackL.className = 'containerBackL';
+  buttonBackL.className = 'buttonBackL';
+  headerLogin.className = 'headerLogin';
   tittleLogin.className = 'tittleLogin';
   buttonGoogle.className = 'buttonGoogle';
   buttonTwitter.className = 'buttonTwitter';
@@ -62,12 +70,16 @@ export const Login = () => {
         }
       });
   });
+  buttonBackL.addEventListener('click', () => {
+    onNavigate('/');
+  });
   buttonRegisterReturn.addEventListener('click', () => {
     onNavigate('/register');
   });
 
+  containerBackL.append(buttonBackL, headerLogin);
   paragraphReg.append(buttonRegisterReturn);
-  div.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGithub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg);
-
+  containerContentL.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGithub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg);
+  div.append(containerBackL, containerContentL);
   return div;
 };

@@ -36,7 +36,6 @@ body {
     padding: 0px;
     min-height: 100vh;
 }
-
 .titleWelcome {
     color: #557F04;
     font-size: 53px;
@@ -74,6 +73,40 @@ body {
 /*  .divLogin{
 
 }  */
+.containerBackL {
+    display: block;
+    /*align-items: flex-start;*/
+    /* flex-flow: row; */
+    justify-content: space-between;
+    flex-direction: row;
+    /* position: fixed; */
+    width: 100%;
+}
+
+.buttonBackL {
+    position: absolute;
+    top: 2vh;
+}
+.headerLogin {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: #0E0101;
+    padding-top: 3.5vh;
+    
+}
+
+.divCenterL {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 40px;
+    left: 30%;
+}
 
 .tittleLogin {
     color: #557F04;
@@ -133,7 +166,7 @@ body {
     /*align-items: flex-start;*/
     /* flex-flow: row; */
     justify-content: space-between;
-     flex-direction: row;
+    flex-direction: row;
     /* position: fixed; */
     width: 100%;
 }
