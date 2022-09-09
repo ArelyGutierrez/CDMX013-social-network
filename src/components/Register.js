@@ -57,9 +57,6 @@ export const Register = () => {
       // ...
     })
       .catch((error) => {
-        /*         const errorCode = error.code;
-        const errorMessage = error.message; */
-        // console.log(errorMessage);
         if (inputUser.value === '' || inputEmail.value === '' || inputPass.value === '') {
           errorMessageRegister.innerHTML = 'Llena los campos requeridos';
         } else if (error.code === 'auth/email-already-in-use') {
