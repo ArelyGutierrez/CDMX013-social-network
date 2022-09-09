@@ -3,7 +3,7 @@ import { newUser } from '../lib/auth.js';
 
 export const Register = () => {
   const div = document.createElement('div');
-  const containerBack = document.createElement('button');
+  const containerBack = document.createElement('div');
   const containerContent = document.createElement('div');
   const headerRegister = document.createElement('p');
   const title = document.createElement('h2');
@@ -12,13 +12,13 @@ export const Register = () => {
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
   const errorMessageRegister = document.createElement('div'); // error messages
-  const buttonBack = document.createElement('button');
+  const buttonBack = document.createElement('img'); // document.createElement('button');
   const termsLegend = document.createElement('p');
   const cointenerQuestion = document.createElement('div');
   const paragraph2 = document.createElement('p');
   const hrefLogin = document.createElement('href');
 
-  buttonBack.textContent = '<'; // buttonBack.src = url('./images/arrow_back.png');
+  buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
   headerRegister.textContent = 'Bienvenida';
   title.textContent = 'Crea tu cuenta';
   inputUser.placeholder = 'Usuario';
@@ -57,10 +57,7 @@ export const Register = () => {
       // ...
     })
       .catch((error) => {
-        /*         const errorCode = error.code;
-        const errorMessage = error.message; */
-        // console.log(errorMessage);
-        if (inputEmail.value === '' || inputEmail.value === '' || inputPass.value === '') {
+        if (inputUser.value === '' || inputEmail.value === '' || inputPass.value === '') {
           errorMessageRegister.innerHTML = 'Llena los campos requeridos';
         } else if (error.code === 'auth/email-already-in-use') {
           errorMessageRegister.innerHTML = 'Ya existe una cuenta con la dirección de correo electrónico dada.'; // alert('The password is too weak.');

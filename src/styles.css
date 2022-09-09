@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Qwitcher+Grypen&family=Staatliches&display=swap');
 
 *{
-    margin: 0%;
-    padding: 0%;
-}
+    margin: 0;
+    padding: 0;  
+} 
 body {
     background-color: rgba(185, 176, 176, 0.54);
     margin: 0px;
@@ -32,6 +32,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     text-align: center;
+    height: 100vh;
     padding: 0px;
     min-height: 100vh;
 }
@@ -72,6 +73,40 @@ body {
 /*  .divLogin{
 
 }  */
+.containerBackL {
+    display: block;
+    /*align-items: flex-start;*/
+    /* flex-flow: row; */
+    justify-content: space-between;
+    flex-direction: row;
+    /* position: fixed; */
+    width: 100%;
+}
+
+.buttonBackL {
+    position: absolute;
+    top: 2vh;
+}
+.headerLogin {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: #0E0101;
+    padding-top: 3.5vh;
+    
+}
+
+.divCenterL {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 40px;
+    left: 30%;
+}
 
 .tittleLogin {
     color: #557F04;
@@ -127,23 +162,29 @@ body {
 /* REGISTER STYLES ////////////// */
 
 .cointenerBack {
-    display: flex;
+    display: block;
     /*align-items: flex-start;*/
-    flex-flow: row;
+    /* flex-flow: row; */
     justify-content: space-between;
     flex-direction: row;
     /* position: fixed; */
+    width: 100%;
 }
 
-/*.buttonBack{}*/
+.buttonBack{
+    position: absolute;
+    top: 2vh;
+}
 .headerRegister {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 19px;
-    align-items: flex-start;
+    align-items: center;
     text-align: center;
     color: #0E0101;
+    padding-top: 3.5vh;
+    
 }
 
 .divCenterR {
