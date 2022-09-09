@@ -27,7 +27,7 @@ export const Register = () => {
   paragraph2.textContent = '¿No tienes cuenta?';
   hrefLogin.textContent = 'Inicia sesión';
 
-  div.className = 'divWelcome';
+  div.className = 'divCenter';
   containerBack.className = 'cointenerBack';
   buttonBack.className = 'buttonBack';
   containerBack.className = 'containerBack';
@@ -51,10 +51,7 @@ export const Register = () => {
       // ...
     })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        console.log('nel carnal');
+        console.log(error);
         // ..
       });
   });
