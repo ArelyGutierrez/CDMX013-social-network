@@ -4,6 +4,8 @@ import { verify } from '../lib/auth.js';
 export const Login = () => {
   const divdos = document.createElement('div');
   const div = document.createElement('div');
+  const containerContentL = document.createElement('div');
+  const headerLogin = document.createElement('p');
   const tittleLogin = document.createElement('h2');
   const buttonGoogle = document.createElement('button');
   const buttonTwitter = document.createElement('button');
@@ -17,29 +19,31 @@ export const Login = () => {
   const divtres = document.createElement('div');
 
   tittleLogin.textContent = 'Iniciar Sesión';
-  buttonGoogle.textContent = 'Iniciar sesión con Google';
+  buttonGoogle.textContent = 'Iniciar Sesión con Google';
   buttonTwitter.textContent = 'Iniciar Sesión con Twitter';
   buttonGithub.textContent = 'Iniciar Sesión con GitHub';
+  paragraphLogin.textContent = '__________________o__________________';
+  inputMail.placeholder = 'Correo electrónico';
+  inputPasw.placeholder = 'Contraseña';
   buttonLoginStart.textContent = 'Iniciar sesión';
-  paragraphLogin.textContent = '____________o____________';
-  inputMail.placeholder = 'Email';
-  inputPasw.placeholder = 'Password';
   paragraphReg.textContent = '¿No tienes una cuenta?';
   buttonRegisterReturn.textContent = 'Registrate';
 
   divdos.className = 'divLogin';
-  div.className = 'divWelcome';
+  div.className = 'divCenter';
   tittleLogin.className = 'tittleLogin';
-  buttonLoginStart.className = 'buttonLogin';
   buttonGoogle.className = 'buttonGoogle';
   buttonTwitter.className = 'buttonTwitter';
   buttonGithub.className = 'buttonGithub';
-  buttonLoginStart.className = 'buttonLogin';
   paragraphLogin.className = 'paragraphLogin';
   inputMail.className = 'inputMail';
   inputPasw.className = 'inputPasw';
+  buttonLoginStart.className = 'buttonLogin';
+  divtres.className = 'errorMessagesR';
   paragraphReg.className = 'paragraphReg';
   buttonRegisterReturn.className = 'buttonRegisterReturn';
+
+  inputPasw.type = 'password';
 
   buttonLoginStart.addEventListener('click', () => {
     verify(inputMail.value, inputPasw.value)
@@ -47,13 +51,16 @@ export const Login = () => {
         // Signed in
         onNavigate('/wall');
         const user = userCredential.user;
+        console.log(user);
         // ...
       })
       .catch((error) => {
-        if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-email') {
+        if (inputMail.value === '' || inputPasw.value === '') {
           divtres.innerHTML = 'Llena los campos requeridos';
-        } else {
-          divtres.innerHTML = 'Correo electrónico y/o password incorrecto';
+        } else if (error.code === 'auth/wrong-password') {
+          divtres.innerHTML = 'Correo electrónico y/o contraseña incorrecta';
+        } else if (error.code === 'auth/invalid-email') {
+          divtres.innerHTML = 'Correo electrónico y/o contraseña incorrecta';
         }
       });
   });
@@ -61,7 +68,8 @@ export const Login = () => {
     onNavigate('/register');
   });
 
-  div.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGithub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg, buttonRegisterReturn);
+  paragraphReg.append(buttonRegisterReturn);
+  div.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGithub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg);
 
   return div;
 };
