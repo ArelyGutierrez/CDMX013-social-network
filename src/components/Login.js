@@ -5,8 +5,8 @@ export const Login = () => {
   const divdos = document.createElement('div');
   const div = document.createElement('div');
   const tittleLogin = document.createElement('h2');
-  const buttonEmail = document.createElement('button');
-  const buttonPass = document.createElement('button');
+  const buttonGoogle = document.createElement('button');
+  const buttonTwitter = document.createElement('button');
   const buttonGithub = document.createElement('button');
   const buttonLoginStart = document.createElement('button');
   const paragraphLogin = document.createElement('p');
@@ -14,29 +14,30 @@ export const Login = () => {
   const inputPasw = document.createElement('input');
   const paragraphReg = document.createElement('p');
   const buttonRegisterReturn = document.createElement('href');
+  const divtres = document.createElement('div');
 
   tittleLogin.textContent = 'Iniciar Sesión';
-  buttonEmail.textContent = 'Iniciar Sesión con Google';
-  buttonPass.textContent = 'Iniciar Sesión con Twitter';
+  buttonGoogle.textContent = 'Iniciar Sesión con Google';
+  buttonTwitter.textContent = 'Iniciar Sesión con Twitter';
   buttonGithub.textContent = 'Iniciar Sesión con GitHub';
-  buttonLoginStart.textContent = 'Iniciar sesión';
-  paragraphLogin.textContent = '____________o____________';
+  paragraphLogin.textContent = '__________________o__________________';
   inputMail.placeholder = 'Correo electrónico';
   inputPasw.placeholder = 'Contraseña';
+  buttonLoginStart.textContent = 'Iniciar sesión';
   paragraphReg.textContent = '¿No tienes una cuenta?';
   buttonRegisterReturn.textContent = 'Registrate';
 
   divdos.className = 'divLogin';
-  div.className = 'divWelcome';
+  div.className = 'divCenter';
   tittleLogin.className = 'tittleLogin';
-  buttonLoginStart.className = 'buttonLogin';
-  buttonEmail.className = 'buttonEmail';
-  buttonPass.className = 'buttonPass';
+  buttonGoogle.className = 'buttonGoogle';
+  buttonTwitter.className = 'buttonTwitter';
   buttonGithub.className = 'buttonGithub';
-  buttonLoginStart.className = 'buttonLogin';
   paragraphLogin.className = 'paragraphLogin';
   inputMail.className = 'inputMail';
   inputPasw.className = 'inputPasw';
+  buttonLoginStart.className = 'buttonLogin';
+  divtres.className = 'errorMessagesR';
   paragraphReg.className = 'paragraphReg';
   buttonRegisterReturn.className = 'buttonRegisterReturn';
 
@@ -48,20 +49,25 @@ export const Login = () => {
         // Signed in
         onNavigate('/wall');
         const user = userCredential.user;
+        console.log(user);
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('Error mensaje');
+        if (inputMail.value === '' || inputPasw.value === '') {
+          divtres.innerHTML = 'Llena los campos requeridos';
+        } else if (error.code === 'auth/wrong-password') {
+          divtres.innerHTML = 'Correo electrónico y/o contraseña incorrecta';
+        } else if (error.code === 'auth/invalid-email') {
+          divtres.innerHTML = 'Correo electrónico y/o contraseña incorrecta';
+        }
       });
   });
-  console.log(buttonEmail.value);
   buttonRegisterReturn.addEventListener('click', () => {
     onNavigate('/register');
   });
 
-  div.append(tittleLogin, buttonEmail, buttonPass, buttonGithub, paragraphLogin, inputMail, inputPasw, buttonLoginStart, paragraphReg, buttonRegisterReturn);
+  paragraphReg.append(buttonRegisterReturn);
+  div.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGithub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg);
 
   return div;
 };

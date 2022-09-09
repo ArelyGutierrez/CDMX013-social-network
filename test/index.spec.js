@@ -1,8 +1,11 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { verify } from '../src/lib/auth.js';
+import { app } from '../src/lib/config.js';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+describe('Error Messages in Login', () => {
+  it.only('Error message of empty fields', () => {
+    const email = '';
+    const password = '';
+    expect(verify(email, password)).toEqual('Llena los campos requeridos');
   });
 });

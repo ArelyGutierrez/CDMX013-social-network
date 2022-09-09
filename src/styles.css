@@ -94,7 +94,7 @@ body {
     font-size: 12px;
 }
 
-.inputMail .inputPasw {
+.inputMail, .inputPasw {
     background-color: #e8e8e8;
     color: #041322;
     border-radius: 10px;
@@ -169,7 +169,8 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     line-height: 17px;
-    color: rgba(0, 0, 0, 0.54);
+    background-color: #e8e8e8;
+    color: #041322;
 }
 
 /*Mensajes de error */
