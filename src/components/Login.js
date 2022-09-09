@@ -21,8 +21,8 @@ export const Login = () => {
   buttonGithub.textContent = 'Iniciar Sesión con GitHub';
   buttonLoginStart.textContent = 'Iniciar sesión';
   paragraphLogin.textContent = '____________o____________';
-  inputMail.placeholder = 'Email';
-  inputPasw.placeholder = 'Password';
+  inputMail.placeholder = 'Correo electrónico';
+  inputPasw.placeholder = 'Contraseña';
   paragraphReg.textContent = '¿No tienes una cuenta?';
   buttonRegisterReturn.textContent = 'Registrate';
 
@@ -39,6 +39,8 @@ export const Login = () => {
   inputPasw.className = 'inputPasw';
   paragraphReg.className = 'paragraphReg';
   buttonRegisterReturn.className = 'buttonRegisterReturn';
+
+  inputPasw.type = 'password';
 
   buttonLoginStart.addEventListener('click', () => {
     verify(inputMail.value, inputPasw.value)
