@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen&family=Staatliches&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Qwitcher+Grypen&family=Staatliches&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;  
+} 
 body {
     background-color: rgba(185, 176, 176, 0.54);
     margin: 0px;
@@ -10,6 +14,7 @@ body {
 #root {
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 .divCenter {
@@ -27,9 +32,9 @@ body {
     background-attachment: fixed;
     background-position: center;
     text-align: center;
-    height: 100%;
+    height: 100vh;
     padding: 0px;
-    margin: -50px;
+    min-height: 100vh;
 }
 
 .titleWelcome {
@@ -124,23 +129,29 @@ body {
 /* REGISTER STYLES ////////////// */
 
 .cointenerBack {
-    display: flex;
+    display: block;
     /*align-items: flex-start;*/
-    flex-flow: row;
+    /* flex-flow: row; */
     justify-content: space-between;
-    flex-direction: row;
+     flex-direction: row;
     /* position: fixed; */
+    width: 100%;
 }
 
-/*.buttonBack{}*/
+.buttonBack{
+    position: absolute;
+    top: 2vh;
+}
 .headerRegister {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 19px;
-    align-items: flex-start;
+    align-items: center;
     text-align: center;
     color: #0E0101;
+    padding-top: 3.5vh;
+    
 }
 
 .divCenterR {
