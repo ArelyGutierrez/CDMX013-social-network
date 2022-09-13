@@ -1,10 +1,58 @@
+import { onNavigate } from '../main.js';
+
 export const Wall = () => {
   const div = document.createElement('div');
-  const title = document.createElement('h2');
+  const containerBack = document.createElement('div');
+  const buttonBack = document.createElement('img');
+  const headerWall = document.createElement('p'); // document.createElement('img');
+  const containerContent = document.createElement('div');
+  const greeting = document.createElement('h2');
+  const questionPost = document.createElement('p');
+  const divNewPost = document.createElement('div');
+  const inputPost = document.createElement('input');
+  const buttonPost = document.createElement('img'); // const buttonPost = document.createElement('button');
+  const errorMessagePost = document.createElement('div'); // error messages
+  const containerNewsWall = document.createElement('div');
+  const newsWallTitle = document.createElement('h2');
+  const noNewsWall = document.createElement('p');
 
-  title.textContent = 'Welcome to the Wall';
+  buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
+  headerWall.textContent = 'BARAN'; // headerWall.src = './images/logochef.jpg';
+  greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
+  questionPost.textContent = '¿Quieres compartir algo?';
+  inputPost.placeholder = 'Escribe aqui... ';
+  // buttonPost.textContent = 'Publicar';
+  buttonPost.src = './images/send1.png';
+  errorMessagePost.textContent = ''; // si hay error lo despliega aquí
+  newsWallTitle.textContent = 'Novedades';
+  noNewsWall.textContent = 'No hay novedades por el momento';
 
-  div.append(title);
+  containerBack.className = 'containerBack';
+  containerContent.className = 'divCenterR';
+  containerNewsWall.className = 'divCenterR';
+
+  buttonBack.className = 'buttonBack';
+  headerWall.className = 'headerRegister';
+  greeting.className = 'titlePost';
+  questionPost.className = 'paragraphWall';
+  inputPost.className = 'inputPost';
+  buttonPost.className = 'buttonPost';
+  errorMessagePost.className = 'errorMessagesR';
+  newsWallTitle.className = 'titlePost';
+  noNewsWall.className = 'paragraphNoNewsWall';
+
+  buttonBack.addEventListener('click', () => {
+    onNavigate('/login');
+  });
+  headerWall.addEventListener('click', () => {
+    onNavigate('/');
+  });
+
+  containerBack.append(buttonBack, headerWall);
+  divNewPost.append(inputPost, buttonPost);
+  containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);
+  containerNewsWall.append(newsWallTitle, noNewsWall);
+  div.append(containerBack, containerContent, containerNewsWall);
 
   return div;
 };
