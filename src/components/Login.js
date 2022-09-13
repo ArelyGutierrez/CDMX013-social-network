@@ -1,5 +1,5 @@
 import { onNavigate } from '../main.js';
-import { verify } from '../lib/auth.js';
+import { verify, verifyG } from '../lib/auth.js';
 
 export const Login = () => {
   const containerContentL = document.createElement('div');
@@ -8,9 +8,9 @@ export const Login = () => {
   const headerLogin = document.createElement('p');
   const buttonBackL = document.createElement('img');
   const tittleLogin = document.createElement('h2');
-  const buttonGoogle = document.createElement('button');
-  const buttonTwitter = document.createElement('button');
-  const buttonGithub = document.createElement('button');
+  const buttonGoogle = document.createElement('img');
+  const buttonTwitter = document.createElement('img');
+  const buttonGithub = document.createElement('img');
   const buttonLoginStart = document.createElement('button');
   const paragraphLogin = document.createElement('p');
   const inputMail = document.createElement('input');
@@ -22,9 +22,9 @@ export const Login = () => {
   buttonBackL.src = './images/arrowBack.png';
   headerLogin.textContent = 'Bienvenida';
   tittleLogin.textContent = 'Iniciar Sesión';
-  buttonGoogle.textContent = 'Iniciar Sesión con Google';
-  buttonTwitter.textContent = 'Iniciar Sesión con Twitter';
-  buttonGithub.textContent = 'Iniciar Sesión con GitHub';
+  buttonGoogle.src = './images/web/1x/btn_google_signin_light_normal_web.png';
+  buttonTwitter.src = './images/web/iniciocontwitter.png';
+  buttonGithub.src = './images/web/iniciogithub.png';
   paragraphLogin.textContent = '__________________o__________________';
   inputMail.placeholder = 'Correo electrónico';
   inputPasw.placeholder = 'Contraseña';
@@ -75,6 +75,11 @@ export const Login = () => {
   });
   buttonRegisterReturn.addEventListener('click', () => {
     onNavigate('/register');
+  });
+
+  buttonGoogle.addEventListener('click', () => {
+    verifyG();
+    onNavigate('/wall');
   });
 
   containerBackL.append(buttonBackL, headerLogin);
