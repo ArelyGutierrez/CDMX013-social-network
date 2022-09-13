@@ -116,7 +116,7 @@ body {
     margin-bottom: 0px;
 }
 
-.buttonGoogle, .buttonTwitter, .buttonGithub, .buttonLoginStart {
+.buttonGoogle, .buttonTwitter, .buttonLoginStart {
     background-color: #041322;
     color: #fdfdfd;
     border-radius: 10px;
@@ -126,6 +126,9 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     margin-bottom: 10px;
+}
+.buttonGithub{
+    
 }
 
 .paragraphLogin {
@@ -310,10 +313,12 @@ body {
     background-color: #EBECFC;
     color: rgba(0, 0, 0, 0.54);
 }
-.buttonPost{
-    width: 15vw;
-    height: 54px;
-    margin-top: 15px;
+#buttonPost{
+    width: 15rem;
+    height: 54rem;
+    margin-top: 15rem;
+    align-items: center;
+
 }
 .paragraphNoNewsWall {
     width: 85vw;
@@ -328,5 +333,14 @@ body {
     color:rgba(0, 0, 0, 0.54);
     padding-top: 5vh;
     margin-left: 0px;
+}
+
+.headerWall{    
+    align-items: center;
+    padding-top: .5vh;
+    justify-items: center;
+    margin-left: 8rem;
+    width: 4rem;
+    height: 4rem;
 }
 

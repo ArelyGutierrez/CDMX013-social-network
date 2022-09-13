@@ -10,7 +10,7 @@ export const Login = () => {
   const tittleLogin = document.createElement('h2');
   const buttonGoogle = document.createElement('button');
   const buttonTwitter = document.createElement('button');
-  const buttonGithub = document.createElement('button');
+  const buttonGithub = document.createElement('img');
   const buttonLoginStart = document.createElement('button');
   const paragraphLogin = document.createElement('p');
   const inputMail = document.createElement('input');
@@ -24,7 +24,7 @@ export const Login = () => {
   tittleLogin.textContent = 'Iniciar Sesión';
   buttonGoogle.textContent = 'Iniciar Sesión con Google';
   buttonTwitter.textContent = 'Iniciar Sesión con Twitter';
-  buttonGithub.textContent = 'Iniciar Sesión con GitHub';
+  buttonGithub.src = './images/iniciogithub.png';
   paragraphLogin.textContent = '__________________o__________________';
   inputMail.placeholder = 'Correo electrónico';
   inputPasw.placeholder = 'Contraseña';
