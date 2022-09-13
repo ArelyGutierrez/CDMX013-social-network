@@ -32,8 +32,7 @@ export const Register = () => {
 
   containerContent.className = 'divCenterR';
   containerBack.className = 'cointenerBack';
-  buttonBack.className = 'buttonBack';
-  containerBack.className = 'containerBack';
+  buttonBack.className = 'buttonBack'; /* containerBack.className = 'containerBack'; */
   headerRegister.className = 'headerRegister';
   title.className = 'titleRegister';
   inputUser.className = 'inputRegister';
@@ -53,7 +52,7 @@ export const Register = () => {
       // Signed in
       onNavigate('/login');
       const user = userCredential.user;
-      //  console.log(user);
+      console.log(user);
       // ...
     })
       .catch((error) => {

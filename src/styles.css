@@ -40,8 +40,9 @@ body {
     color: #557F04;
     font-size: 53px;
     font-family: 'Qwitcher Grypen', cursive;
+    font-weight: bold;
     margin-bottom: 15px;
-    padding-top: 100px;
+    padding-top: 30vh; /*100px */
 }
 
 .buttonLogin {
@@ -283,5 +284,49 @@ body {
     font-weight: bold;
     margin-left: auto;
     padding: 0%;
+}
+/* /////// WALL */
+
+.titlePost {
+    font-family: 'Inter', sans-serif;
+    font-weight: 70px;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 15px;
+}
+.paragraphWall{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    left: 8vw;
+}
+.inputPost {
+    width: 70vw;
+    height: 54px;
+    border-radius: 10px;
+    border-color: #EBECFC; 
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #EBECFC;
+    color: rgba(0, 0, 0, 0.54);
+}
+.buttonPost{
+    width: 15vw;
+    height: 54px;
+    margin-top: 15px;
+}
+.paragraphNoNewsWall {
+    width: 85vw;
+    height: 50vh;
+    border-radius: 10px;
+    border-color: #EBECFC; 
+    margin-bottom: 13px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #EBECFC;
+    color:rgba(0, 0, 0, 0.54);
+    padding-top: 5vh;
+    margin-left: 0px;
 }
 
