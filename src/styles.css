@@ -286,18 +286,7 @@ body {
     padding: 0%;
 }
 /* /////// WALL */
-.inputPost {
-    width: 270px;
-    height: 54px;
-    border-radius: 10px;
-    border-color: #EBECFC; 
-    margin-bottom: 13px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 17px;
-    background-color: #EBECFC;
-    color: rgba(0, 0, 0, 0.54);
-}
+
 .titlePost {
     font-family: 'Inter', sans-serif;
     font-weight: 70px;
@@ -308,7 +297,23 @@ body {
 .paragraphWall{
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    text-align:start;
+    left: 8vw;
+}
+.inputPost {
+    width: 70vw;
+    height: 54px;
+    border-radius: 10px;
+    border-color: #EBECFC; 
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #EBECFC;
+    color: rgba(0, 0, 0, 0.54);
+}
+.buttonPost{
+    width: 15vw;
+    height: 54px;
+    margin-top: 15px;
 }
 .paragraphNoNewsWall {
     width: 85vw;
@@ -325,10 +330,3 @@ body {
     margin-left: 0px;
 }
 
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
