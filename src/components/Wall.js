@@ -29,8 +29,8 @@ export const Wall = () => {
   noNewsWall.textContent = 'No hay novedades por el momento';
 
   containerBack.className = 'containerBack';
-  containerContent.className = 'divCenterR';
-  containerNewsWall.className = 'divCenterR';
+  containerContent.className = 'divCenterW';
+  containerNewsWall.className = 'divCenterW';
 
   buttonBack.className = 'buttonBack';
   headerWall.className = 'headerWall';

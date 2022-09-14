@@ -52,7 +52,7 @@ export const Register = () => {
       // Signed in
       onNavigate('/login');
       const user = userCredential.user;
-      console.log(user);
+      // console.log(user);
       // ...
     })
       .catch((error) => {

@@ -307,13 +307,11 @@ body {
     background-color: #EBECFC;
     color: rgba(0, 0, 0, 0.54);
 }
-#buttonPost{
-    width: 15rem;
-    height: 54rem;
-    margin-top: 15rem;
-    align-items: center;
-
-}
+/* .buttonPost{
+    width: 15vw;
+    height: 54px;
+    margin-top: 15px;
+} */
 .paragraphNoNewsWall {
     width: 85vw;
     height: 50vh;
@@ -328,13 +326,13 @@ body {
     padding-top: 5vh;
     margin-left: 0px;
 }
-
-.headerWall{    
-    align-items: center;
-    padding-top: .5vh;
-    justify-items: center;
-    margin-left: 8rem;
-    width: 4rem;
-    height: 4rem;
+.divCenterW {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center;
+    align-items: center; */
+    margin-top: 40px;
+    margin-left: 8vw;
+    left: 30%;
 }
 
