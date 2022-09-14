@@ -18,7 +18,7 @@ export const Wall = () => {
   const noNewsWall = document.createElement('p');
 
   buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
-  headerWall.src = './images/logogorro.png'; // headerWall.src = './images/logochef.jpg';
+  headerWall.src = './images/gorro.png'; // headerWall.src = './images/logochef.jpg';
   greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
   questionPost.textContent = '¿Quieres compartir algo?';
   inputPost.placeholder = 'Escribe aqui... ';

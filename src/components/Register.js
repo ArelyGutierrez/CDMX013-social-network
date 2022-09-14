@@ -31,7 +31,7 @@ export const Register = () => {
   hrefLogin.textContent = 'Inicia sesión';
 
   containerContent.className = 'divCenterR';
-  containerBack.className = 'cointenerBack';
+  containerBack.className = 'containerBack';
   buttonBack.className = 'buttonBack'; /* containerBack.className = 'containerBack'; */
   headerRegister.className = 'headerRegister';
   title.className = 'titleRegister';
@@ -41,7 +41,7 @@ export const Register = () => {
   errorMessageRegister.className = 'errorMessagesR'; // errores
   buttonRegisterL.className = 'buttonRegisterL';
   termsLegend.className = 'termsLegend';
-  cointenerQuestion.className = 'conteinerQuestion';
+  cointenerQuestion.className = 'containerQuestion';
   paragraph2.className = 'paragraph2';
   hrefLogin.className = 'hrefLogin';
 
