@@ -57,7 +57,7 @@ export const Login = () => {
         // Signed in
         onNavigate('/wall');
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         // ...
       })
       .catch((error) => {

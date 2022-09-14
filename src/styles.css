@@ -318,11 +318,11 @@ body {
     background-color: #EBECFC;
     color: rgba(0, 0, 0, 0.54);
 }
-.buttonPost{
+/* .buttonPost{
     width: 15vw;
     height: 54px;
     margin-top: 15px;
-}
+} */
 .paragraphNoNewsWall {
     width: 85vw;
     height: 50vh;
@@ -336,5 +336,14 @@ body {
     color:rgba(0, 0, 0, 0.54);
     padding-top: 5vh;
     margin-left: 0px;
+}
+.divCenterW {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center;
+    align-items: center; */
+    margin-top: 40px;
+    margin-left: 8vw;
+    left: 30%;
 }
 
