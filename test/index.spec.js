@@ -1,5 +1,4 @@
 /* // importamos la funcion que vamos a testear
-import { describe } from 'yargs';
 import { newUser, verify } from '../src/lib/auth.js';
 import { app } from '../src/lib/config.js';
 
@@ -10,12 +9,18 @@ import { app } from '../src/lib/config.js';
     expect(verify(email, password)).toEqual('Llena los campos requeridos');
   });
 }); */
-import { Register} from '../src/components/Register.js';
-import expectExport from 'expect';
+import { newUser, verify } from '../src/lib/auth.js';
+// import { Register } from '../src/components/Register.js';
+
+jest.mock('../src/lib/auth.js');
 
 describe('register', () => {
-  it('iniciar sesion con correo : algo@algo.algo y contraseña: abc123'), () => {
-    return newUser(email, password).then((user)=>{
-      expect(user).toBe(user.email=='algo@algo.algo');
-    })
-  })
+  it('iniciar sesion con correo : algo@algo.algo y contraseña: abc123', () => {
+    const email = '';
+    const password = '';
+    return newUser(email, password).then((user) => {
+      expect(user.email === 'algo@algo.algo').toBe(true);
+      expect(user.password === 'abc123').toBe(true);
+    });
+  });
+});
