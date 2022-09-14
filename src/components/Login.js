@@ -8,13 +8,8 @@ export const Login = () => {
   const headerLogin = document.createElement('p');
   const buttonBackL = document.createElement('img');
   const tittleLogin = document.createElement('h2');
-<<<<<<< HEAD
-  const buttonGoogle = document.createElement('button');
-  const buttonTwitter = document.createElement('button');
-=======
   const buttonGoogle = document.createElement('img');
   const buttonTwitter = document.createElement('img');
->>>>>>> 7b4f5472ec43bb41aa034ac8054f829be8a80dc7
   const buttonGithub = document.createElement('img');
   const buttonLoginStart = document.createElement('button');
   const paragraphLogin = document.createElement('p');
@@ -27,15 +22,9 @@ export const Login = () => {
   buttonBackL.src = './images/arrowBack.png';
   headerLogin.textContent = 'Bienvenida';
   tittleLogin.textContent = 'Iniciar Sesión';
-<<<<<<< HEAD
-  buttonGoogle.textContent = 'Iniciar Sesión con Google';
-  buttonTwitter.textContent = 'Iniciar Sesión con Twitter';
-  buttonGithub.src = './images/iniciogithub.png';
-=======
   buttonGoogle.src = './images/web/1x/btn_google_signin_light_normal_web.png';
   buttonTwitter.src = './images/web/iniciocontwitter.png';
   buttonGithub.src = './images/web/iniciogithub.png';
->>>>>>> 7b4f5472ec43bb41aa034ac8054f829be8a80dc7
   paragraphLogin.textContent = '__________________o__________________';
   inputMail.placeholder = 'Correo electrónico';
   inputPasw.placeholder = 'Contraseña';
