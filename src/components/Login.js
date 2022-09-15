@@ -1,5 +1,7 @@
 import { onNavigate } from '../main.js';
-import { twitterUser, verify, verifyG, verifyGitHub } from '../lib/auth.js';
+import {
+  twitterUser, verify, verifyG, verifyGitHub,
+} from '../lib/auth.js';
 
 export const Login = () => {
   const containerContentL = document.createElement('div');
@@ -82,6 +84,10 @@ export const Login = () => {
 
   buttonTwitter.addEventListener('click', () => {
     twitterUser();
+  });
+
+  buttonGitHub.addEventListener('click', () => {
+    verifyGitHub();
   });
 
   containerBackL.append(buttonBackL, headerLogin);
