@@ -4,7 +4,8 @@ export const Wall = () => {
   const div = document.createElement('div');
   const containerBack = document.createElement('div');
   const buttonBack = document.createElement('img');
-  const headerWall = document.createElement('p'); // document.createElement('img');
+  const headerWall = document.createElement('img');
+
   const containerContent = document.createElement('div');
   const greeting = document.createElement('h2');
   const questionPost = document.createElement('p');
@@ -17,7 +18,7 @@ export const Wall = () => {
   const noNewsWall = document.createElement('p');
 
   buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
-  headerWall.textContent = 'BARAN'; // headerWall.src = './images/logochef.jpg';
+  headerWall.src = './images/gorro.png'; // headerWall.src = './images/logochef.jpg';
   greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
   questionPost.textContent = '¿Quieres compartir algo?';
   inputPost.placeholder = 'Escribe aqui... ';
@@ -32,7 +33,7 @@ export const Wall = () => {
   containerNewsWall.className = 'divCenterW';
 
   buttonBack.className = 'buttonBack';
-  headerWall.className = 'headerRegister';
+  headerWall.className = 'headerWall';
   greeting.className = 'titlePost';
   questionPost.className = 'paragraphWall';
   inputPost.className = 'inputPost';
