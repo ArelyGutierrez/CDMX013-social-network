@@ -54,7 +54,7 @@ export const twitterUser = () => signInWithPopup(auth, providerTwitter)
     // ...
   });
 
-// Autenticación con GitHub
+// //////////////Autenticación con GitHub////////////////
 const providerGithub = new GithubAuthProvider(); // creando instancia del objeto del proveedor de GitHub
 export const verifyGitHub = () => signInWithPopup(auth, providerGithub)
   .then((result) => {
