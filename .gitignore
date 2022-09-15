@@ -4,3 +4,8 @@ coverage/
 node_modules/
 .yarn.lock
 package-lock.json
+<<<<<<< HEAD
+config.js
+=======
+config.js
+>>>>>>> ab95eab8f207c2800f11944428f550a65d3aafd9
