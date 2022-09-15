@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-unresolved
+import { signInWithPopup, GithubAuthProvider } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
 import { onNavigate } from '../main.js';
-import { verify, verifyG } from '../lib/auth.js';
+import { verify, verifyG, verifyGitHub } from '../lib/auth.js';
 
 export const Login = () => {
   const containerContentL = document.createElement('div');
@@ -76,16 +78,12 @@ export const Login = () => {
   buttonRegisterReturn.addEventListener('click', () => {
     onNavigate('/register');
   });
-
   buttonGoogle.addEventListener('click', () => {
     verifyG();
-    onNavigate('/wall');
   });
-
-  // buttonGitHub.addEventListener('click', () => {
-  //   verifyGitHub();
-  //   onNavigate('/wall');
-  // });
+  buttonGitHub.addEventListener('click', () => {
+    verifyGitHub();
+  });
 
   containerBackL.append(buttonBackL, headerLogin);
   paragraphReg.append(buttonRegisterReturn);

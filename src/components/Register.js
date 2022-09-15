@@ -48,24 +48,26 @@ export const Register = () => {
   inputPass.type = 'password';
 
   buttonRegisterL.addEventListener('click', () => {
-    newUser(inputEmail.value, inputPass.value).then((userCredential) => {
-      // Signed in
-      onNavigate('/login');
-      const user = userCredential.user;
-      // console.log(user);
-      // ...
-    })
-      .catch((error) => {
-        if (inputUser.value === '' || inputEmail.value === '' || inputPass.value === '') {
-          errorMessageRegister.innerHTML = 'Llena los campos requeridos';
-        } else if (error.code === 'auth/email-already-in-use') {
-          errorMessageRegister.innerHTML = 'Ya existe una cuenta con la dirección de correo electrónico dada.'; // alert('The password is too weak.');
-        } else if (error.code === 'auth/invalid-email') {
-          errorMessageRegister.innerHTML = 'Dirección de correo electrónico no válida';
-        } else if (error.code === 'auth/weak-password') {
-          errorMessageRegister.innerHTML = 'Introduce al menos 6 caracteres de contraseña';
-        }
-      });
+    if (inputUser.value === '' || inputEmail.value === '' || inputPass.value === '') {
+      errorMessageRegister.innerHTML = 'Llena los campos requeridos';
+    } else {
+      newUser(inputEmail.value, inputPass.value).then((userCredential) => {
+        // Signed in
+        onNavigate('/login');
+        const user = userCredential.user;
+        // console.log(user);
+        // ...
+      })
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            errorMessageRegister.innerHTML = 'Ya existe una cuenta con la dirección de correo electrónico dada.'; // alert('The password is too weak.');
+          } else if (error.code === 'auth/invalid-email') {
+            errorMessageRegister.innerHTML = 'Dirección de correo electrónico no válida';
+          } else if (error.code === 'auth/weak-password') {
+            errorMessageRegister.innerHTML = 'Introduce al menos 6 caracteres de contraseña';
+          }
+        });
+    }
   });
 
   buttonBack.addEventListener('click', () => {
