@@ -1,9 +1,14 @@
 import { onNavigate } from '../main.js';
 import {
-  twitterUser, verify, verifyG, verifyGitHub,
+  twitterUser, verify, verifyG, verifyGitHub, isLoged,
 } from '../lib/auth.js';
 
+// eslint-disable-next-line consistent-return
 export const Login = () => {
+  // isLoged();
+  // if (isLoged !== true) {
+  //   onNavigate('/wall');
+  // } else if (isLoged === false) {
   const containerContentL = document.createElement('div');
   const div = document.createElement('div');
   const containerBackL = document.createElement('div');

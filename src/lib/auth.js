@@ -9,25 +9,36 @@ const auth = getAuth();
 export const newUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 export const verify = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
+// Verificar si un usuario esta logueado
+// eslint-disable-next-line consistent-return
+export const isLoged = () => {
+  const user = auth.currentUser;
+  if (user !== null) {
+    return true;
+  } if (user === null) {
+    return false;
+  }
+};
+
 // Autenticación de Google
 const provider = new GoogleAuthProvider();
 export const verifyG = () => signInWithPopup(auth, provider)
   .then((result) => {
-  // This gives you a Google Access Token. You can use it to access the Google API.
+    // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
     onNavigate('/wall');
   }).catch((error) => {
-  // Handle Errors here.
+    // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
     // The email of the user's account used.
     const email = error.customData.email;
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
-  // ...
+    // ...
   });
 
 // Autenticación de Twitter
@@ -59,6 +70,7 @@ const providerGithub = new GithubAuthProvider(); // creando instancia del objeto
 export const verifyGitHub = () => signInWithPopup(auth, providerGithub)
   .then((result) => {
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+    console.log(result);
     const credential = GithubAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
 
