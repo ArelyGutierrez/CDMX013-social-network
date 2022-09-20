@@ -27,7 +27,7 @@ export const Register = () => {
   buttonRegisterL.textContent = 'Registrarse';
   errorMessageRegister.textContent = ''; // si hay error lo despliega aquí
   termsLegend.textContent = 'Al dar click en Registrarse usted acepta nuestros Términos y Condiciones';
-  paragraph2.textContent = '¿No tienes cuenta?';
+  paragraph2.textContent = '¿Ya tienes cuenta?';
   hrefLogin.textContent = 'Inicia sesión';
 
   containerContent.className = 'divCenterR';
