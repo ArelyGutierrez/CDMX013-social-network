@@ -12,5 +12,3 @@ export const posts = (data) => addDoc(collection(data, dbRef)
   .catch((error) => {
     console.log(error);
   }));
-
-  
