@@ -37,14 +37,19 @@ body {
     padding: 0px;
     min-height: 100vh;
 }
-.titleWelcome {
+.titleWelcome, .titleWelcome2, .titleWelcome3 {
     color: #557F04;
     font-size: 53px;
     font-family: 'Qwitcher Grypen', cursive;
     font-weight: bold;
-    margin-bottom: 15px;
-    padding-top: 30vh; /*100px */
 }
+
+.titleWelcome{
+    padding-top: 25vh; /* 100px */
+}
+.titleWelcome3{
+   margin-bottom: 5vh;
+} 
 
 .buttonLogin {
     background-color: #041322;
