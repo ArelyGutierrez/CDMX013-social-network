@@ -1,11 +1,11 @@
 import { onNavigate } from '../main.js';
+import { posts } from '../lib/store.js';
 
 export const Wall = () => {
   const div = document.createElement('div');
   const containerBack = document.createElement('div');
   const buttonBack = document.createElement('img');
   const headerWall = document.createElement('img');
-
   const containerContent = document.createElement('div');
   const greeting = document.createElement('h2');
   const questionPost = document.createElement('p');
@@ -31,7 +31,6 @@ export const Wall = () => {
   containerBack.className = 'containerBack';
   containerContent.className = 'divCenterW';
   containerNewsWall.className = 'divCenterW';
-
   buttonBack.className = 'buttonBack';
   headerWall.className = 'headerWall';
   greeting.className = 'titlePost';
@@ -47,6 +46,13 @@ export const Wall = () => {
   });
   headerWall.addEventListener('click', () => {
     onNavigate('/');
+  });
+
+  buttonPost.addEventListener('submit', () => {
+    const data = {
+      text: inputPost.value,
+    };
+    posts(data);
   });
 
   containerBack.append(buttonBack, headerWall);
