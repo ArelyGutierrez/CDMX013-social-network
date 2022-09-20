@@ -1,7 +1,14 @@
 import { onNavigate } from '../main.js';
-import { twitterUser, verify, verifyG } from '../lib/auth.js';
+import {
+  twitterUser, verify, verifyG, verifyGitHub,
+} from '../lib/auth.js';
 
+// eslint-disable-next-line consistent-return
 export const Login = () => {
+  // isLoged();
+  // if (isLoged !== false) {
+  //   onNavigate('/wall');
+  // } else if (isLoged === false) {
   const containerContentL = document.createElement('div');
   const div = document.createElement('div');
   const containerBackL = document.createElement('div');
@@ -10,7 +17,7 @@ export const Login = () => {
   const tittleLogin = document.createElement('h2');
   const buttonGoogle = document.createElement('img');
   const buttonTwitter = document.createElement('img');
-  const buttonGithub = document.createElement('img');
+  const buttonGitHub = document.createElement('img');
   const buttonLoginStart = document.createElement('button');
   const paragraphLogin = document.createElement('p');
   const inputMail = document.createElement('input');
@@ -24,7 +31,7 @@ export const Login = () => {
   tittleLogin.textContent = 'Iniciar Sesión';
   buttonGoogle.src = './images/web/1x/btn_google_signin_light_normal_web.png';
   buttonTwitter.src = './images/web/iniciocontwitter.png';
-  buttonGithub.src = './images/web/iniciogithub.png';
+  buttonGitHub.src = './images/web/iniciogithub.png';
   paragraphLogin.textContent = '__________________o__________________';
   inputMail.placeholder = 'Correo electrónico';
   inputPasw.placeholder = 'Contraseña';
@@ -40,7 +47,7 @@ export const Login = () => {
   tittleLogin.className = 'tittleLogin';
   buttonGoogle.className = 'buttonGoogle';
   buttonTwitter.className = 'buttonTwitter';
-  buttonGithub.className = 'buttonGithub';
+  buttonGitHub.className = 'buttonGithub';
   paragraphLogin.className = 'paragraphLogin';
   inputMail.className = 'inputMail';
   inputPasw.className = 'inputPasw';
@@ -76,7 +83,6 @@ export const Login = () => {
   buttonRegisterReturn.addEventListener('click', () => {
     onNavigate('/register');
   });
-
   buttonGoogle.addEventListener('click', () => {
     verifyG();
   });
@@ -85,9 +91,14 @@ export const Login = () => {
     twitterUser();
   });
 
+  buttonGitHub.addEventListener('click', () => {
+    verifyGitHub();
+  });
+
   containerBackL.append(buttonBackL, headerLogin);
   paragraphReg.append(buttonRegisterReturn);
-  containerContentL.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGithub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg);
+  containerContentL.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGitHub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg);
   div.append(containerBackL, containerContentL);
   return div;
+  // }
 };
