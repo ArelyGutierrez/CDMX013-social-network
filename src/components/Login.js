@@ -1,12 +1,12 @@
 import { onNavigate } from '../main.js';
 import {
-  twitterUser, verify, verifyG, verifyGitHub, isLoged,
+  twitterUser, verify, verifyG, verifyGitHub,
 } from '../lib/auth.js';
 
 // eslint-disable-next-line consistent-return
 export const Login = () => {
   // isLoged();
-  // if (isLoged !== true) {
+  // if (isLoged !== false) {
   //   onNavigate('/wall');
   // } else if (isLoged === false) {
   const containerContentL = document.createElement('div');
@@ -100,4 +100,5 @@ export const Login = () => {
   containerContentL.append(tittleLogin, buttonGoogle, buttonTwitter, buttonGitHub, paragraphLogin, inputMail, inputPasw, divtres, buttonLoginStart, paragraphReg);
   div.append(containerBackL, containerContentL);
   return div;
+  // }
 };

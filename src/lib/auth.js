@@ -9,17 +9,6 @@ const auth = getAuth();
 export const newUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 export const verify = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-// Verificar si un usuario esta logueado
-// eslint-disable-next-line consistent-return
-export const isLoged = () => {
-  const user = auth.currentUser;
-  if (user !== null) {
-    return true;
-  } if (user === null) {
-    return false;
-  }
-};
-
 // Autenticación de Google
 const provider = new GoogleAuthProvider();
 export const verifyG = () => signInWithPopup(auth, provider)
@@ -70,7 +59,7 @@ const providerGithub = new GithubAuthProvider(); // creando instancia del objeto
 export const verifyGitHub = () => signInWithPopup(auth, providerGithub)
   .then((result) => {
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-    console.log(result);
+    // console.log(result); ////////////////////////////////////////////////////////////////////////
     const credential = GithubAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
 
