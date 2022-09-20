@@ -6,7 +6,15 @@
     padding: 0;  
 } 
 body {
-    background-color: rgba(248, 243, 243, 0.54);
+    background: hsla(96, 68%, 75%, 1);
+
+    background: linear-gradient(90deg, hsla(96, 68%, 75%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(96, 68%, 75%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(96, 68%, 75%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B8EB96", endColorstr="#FFFFFF", GradientType=1 );
     margin: 0px;
     padding: 0px;
 }
@@ -90,6 +98,7 @@ body {
     flex-direction: row;
     /* position: fixed; */
     width: 100%;
+    background: white;
 }
 
 .buttonBackL {
@@ -145,7 +154,8 @@ body {
 }
 
 .inputMail, .inputPasw {
-    background-color: #e8e8e8;
+    background-color: #EBECFC;
+    border-color: #EBECFC;
     color: #041322;
     border-radius: 3px;
     width: 190px;
@@ -182,6 +192,7 @@ body {
     flex-direction: row;
     /* position: fixed; */
     width: 100%;
+    background: white;
 }
 
 .buttonBack{
@@ -226,7 +237,8 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     line-height: 17px;
-    background-color: #e8e8e8;
+    border-color: #EBECFC;
+    background-color: #EBECFC;
     color: #041322;
 }
 
