@@ -51,7 +51,7 @@ export const Wall = () => {
   buttonPost.addEventListener('click', () => {
     const data = {
       text: inputPost.value,
-    };
+    }; console.log(data);
     posts(data);
   });
 
