@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import {
-  getFirestore, collection, addDoc, getDocs, onSnapshot,
+  getFirestore, collection, addDoc, getDocs, onSnapshot, query, where, orderBy,
   // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { app } from './config.js';
@@ -29,8 +29,11 @@ export const posts = (data) => addDoc(dbRef, data)
 //   .catch(err => {
 //     console.log(err.message)
 //   });
+// queries
+const q = query(dbRef, orderBy('createdAt'));
+
 export const newPosts = () => {
-  onSnapshot(dbRef, (snapshot) => {
+  onSnapshot(q, (snapshot) => { // onSnapshot(dbRef, (snapshot) => {
     let novedades = [];
     snapshot.forEach((doc) => {
       novedades.push({ ...doc.data(), id: doc.id }); // id: doc.id

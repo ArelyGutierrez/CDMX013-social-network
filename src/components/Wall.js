@@ -1,3 +1,4 @@
+import { serverTimestamp} from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
 import { posts } from '../lib/store.js';
 
@@ -51,6 +52,7 @@ export const Wall = () => {
   buttonPost.addEventListener('click', () => {
     const data = {
       text: inputPost.value,
+      createdAt: serverTimestamp(),
     }; console.log(data);
     posts(data);
   });
