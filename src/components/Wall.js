@@ -1,6 +1,6 @@
-import { serverTimestamp} from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
+import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
-import { posts } from '../lib/store.js';
+import { posts, onGetPosts } from '../lib/store.js';
 
 export const Wall = () => {
   const div = document.createElement('div');
@@ -11,7 +11,7 @@ export const Wall = () => {
   const greeting = document.createElement('h2');
   const questionPost = document.createElement('p');
   const divNewPost = document.createElement('div');
-  const inputPost = document.createElement('input');
+  const inputPost = document.createElement('textarea');
   const buttonPost = document.createElement('img'); // const buttonPost = document.createElement('button');
   const errorMessagePost = document.createElement('div'); // error messages
   const containerNewsWall = document.createElement('div');
@@ -23,9 +23,8 @@ export const Wall = () => {
   greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
   questionPost.textContent = '¿Quieres compartir algo?';
   inputPost.placeholder = 'Escribe aqui... ';
-  // buttonPost.textContent = 'Publicar';
   buttonPost.src = './images/send1.png';
-  errorMessagePost.textContent = ''; // si hay error lo despliega aquí
+  errorMessagePost.textContent = ''; // Si hay error lo despliega aquí
   newsWallTitle.textContent = 'Novedades';
   noNewsWall.textContent = 'No hay novedades por el momento';
 
@@ -55,6 +54,19 @@ export const Wall = () => {
       createdAt: serverTimestamp(),
     }; console.log(data);
     posts(data);
+  });
+
+  // Mostra publicaciones en muro
+  onGetPosts((callback) => {
+    callback.forEach((doc) => {
+      const post = doc.data();
+      const sectionAll = document.createElement('section');
+      sectionAll.className = 'sectionAll';
+      const textPosts = document.createElement('p');
+      textPosts.className = 'textPosts';
+      textPosts.textContent = post.text;
+      noNewsWall.append(sectionAll, textPosts);
+    });
   });
 
   containerBack.append(buttonBack, headerWall);
