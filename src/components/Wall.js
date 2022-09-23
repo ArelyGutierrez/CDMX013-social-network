@@ -1,17 +1,18 @@
-import { serverTimestamp} from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
+/* eslint-disable import/no-unresolved */
+import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
-import { posts } from '../lib/store.js';
+import { savePosts, onGetPosts } from '../lib/store.js';
 
 export const Wall = () => {
   const div = document.createElement('div');
   const containerBack = document.createElement('div');
   const buttonBack = document.createElement('img');
   const headerWall = document.createElement('img');
-  const containerContent = document.createElement('div');
+  const containerContent = document.createElement('form');
   const greeting = document.createElement('h2');
   const questionPost = document.createElement('p');
   const divNewPost = document.createElement('div');
-  const inputPost = document.createElement('input');
+  const inputPost = document.createElement('textarea');
   const buttonPost = document.createElement('img'); // const buttonPost = document.createElement('button');
   const errorMessagePost = document.createElement('div'); // error messages
   const containerNewsWall = document.createElement('div');
@@ -31,7 +32,9 @@ export const Wall = () => {
 
   containerBack.className = 'containerBack';
   containerContent.className = 'divCenterW';
+  containerContent.id = 'newPostForm';
   containerNewsWall.className = 'divCenterW';
+  containerNewsWall.setAttribute('id', 'novedades');
   buttonBack.className = 'buttonBack';
   headerWall.className = 'headerWall';
   greeting.className = 'titlePost';
@@ -49,14 +52,40 @@ export const Wall = () => {
     onNavigate('/');
   });
 
+  // const generatorHTMLnews = (allPostsReturned) => {
+  //   const oneNew = `<section id = 'novedad'>
+  //               <p> ${allPostsReturned.text}</p>
+  //               </section>`;
+  //   return oneNew;
+  // };
+
   buttonPost.addEventListener('click', () => {
     const data = {
       text: inputPost.value,
       createdAt: serverTimestamp(),
-    }; console.log(data);
-    posts(data);
+    }; // console.log(data);
+    savePosts(data);
+    // generatorHTMLnews(data);
   });
 
+  // let allPosts = [];
+  // let showingNews = [];
+  onGetPosts((callback) => {
+    // allPosts = [];
+    callback.forEach((doc) => {
+      const post = doc.data();
+      // allPosts.push(post.text);
+      // showingNews += generatorHTMLnews(post);
+      const sectionAll = document.createElement('section');
+      sectionAll.className = 'sectionAll';
+      const textPosts = document.createElement('p');
+      textPosts.textContent = post.text;
+      sectionAll.append(textPosts);
+      noNewsWall.append(sectionAll);
+    });
+  });
+
+  // generatorHTML += oneNEw;
   containerBack.append(buttonBack, headerWall);
   divNewPost.append(inputPost, buttonPost);
   containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);

@@ -7,46 +7,34 @@ import { app } from './config.js';
 
 // Inicializamos Firestore
 const db = getFirestore(app);
-const dbRef = collection(db, 'post');
+const dbRef = collection(db, 'post'); // (base de datos firestore, nombre en firestoe de coleccion)
 
-export const posts = (data) => addDoc(dbRef, data)
+export const savePosts = (data) => addDoc(dbRef, data) // data-> texto (publicación) nuevo
   .then((docRef) => {
-    console.log('Document has been added successfully');
+    // console.log('Document has been added successfully');
+    // console.log(docRef);
   })
   .catch((error) => {
     console.log(error);
   });
 
-// real time collection data
-// getDocs(dbRef)
-//   .then((snapshot) => {
-//     let novedades = [];
-//     snapshot.docs.forEach((doc) => {
-//       novedades.push({ ...doc.data(), id: doc.id });
+// queries
+const q = query(dbRef, orderBy('createdAt', 'desc'));
+
+export const onGetPosts = (callback) => onSnapshot(q, callback);
+// export const newPosts = () => {
+//   onSnapshot(q, (snapshot) => { // onSnapshot(dbRef, (snapshot) => {
+//     const novedades = [];
+//     let novedadHTML = '';
+//     snapshot.forEach((doc) => {
+//       const prueba = doc.data();
+//       console.log(prueba.text);
+//       novedadHTML += `<section id = 'novedad'>
+//       <p> ${prueba.text}</p>
+//       </section>`;
+//       novedades.push({ prueba }); // id: doc.id
 //     });
 //     console.log(novedades);
+//     return novedadHTML; // containerNewsWall.innerHTML = novedadHTML;
 //   });
-//   .catch(err => {
-//     console.log(err.message)
-//   });
-// queries
-const q = query(dbRef, orderBy('createdAt'));
-
-export const newPosts = () => {
-  onSnapshot(q, (snapshot) => { // onSnapshot(dbRef, (snapshot) => {
-    let novedades = [];
-    snapshot.forEach((doc) => {
-      novedades.push({ ...doc.data(), id: doc.id }); // id: doc.id
-    });
-    console.log(novedades);
-  });
-};
-newPosts();
-
-// obtener post
-// export const getPost = () => dbRef.get();
-//   const querySnapshot = await getDocs(collection(db, 'post'))
-//   querySnapshot.forEach((doc) => {
-//     console.log(doc.data());
-//   });
-// }
+// };
