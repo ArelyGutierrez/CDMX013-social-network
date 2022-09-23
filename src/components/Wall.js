@@ -1,3 +1,4 @@
+import { serverTimestamp} from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
 import { posts } from '../lib/store.js';
 
@@ -10,7 +11,10 @@ export const Wall = () => {
   const greeting = document.createElement('h2');
   const questionPost = document.createElement('p');
   const divNewPost = document.createElement('div');
-  const inputPost = document.createElement('input');
+  const inputPost = document.createElement('textarea');
+  const labelTitle = document.createElement('label');
+  inputPost.id = 'inputpost';
+  inputPost.rows = '3';
   const buttonPost = document.createElement('img'); // const buttonPost = document.createElement('button');
   const errorMessagePost = document.createElement('div'); // error messages
   const containerNewsWall = document.createElement('div');
@@ -22,6 +26,7 @@ export const Wall = () => {
   greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
   questionPost.textContent = '¿Quieres compartir algo?';
   inputPost.placeholder = 'Escribe aqui... ';
+  labelTitle.textContent = 'titulo';
   // buttonPost.textContent = 'Publicar';
   buttonPost.src = './images/send1.png';
   errorMessagePost.textContent = ''; // si hay error lo despliega aquí
@@ -31,6 +36,7 @@ export const Wall = () => {
   containerBack.className = 'containerBack';
   containerContent.className = 'divCenterW';
   containerNewsWall.className = 'divCenterW';
+  labelTitle.className ='labelTitle';
   buttonBack.className = 'buttonBack';
   headerWall.className = 'headerWall';
   greeting.className = 'titlePost';
@@ -51,12 +57,13 @@ export const Wall = () => {
   buttonPost.addEventListener('click', () => {
     const data = {
       text: inputPost.value,
+      createdAt: serverTimestamp(),
     }; console.log(data);
     posts(data);
   });
 
   containerBack.append(buttonBack, headerWall);
-  divNewPost.append(inputPost, buttonPost);
+  divNewPost.append(inputPost, buttonPost, labelTitle);
   containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);
   containerNewsWall.append(newsWallTitle, noNewsWall);
   div.append(containerBack, containerContent, containerNewsWall);

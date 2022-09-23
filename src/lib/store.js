@@ -1,7 +1,7 @@
-/* eslint-disable import/no-unresolved */
 // eslint-disable-next-line import/no-unresolved
 import {
-  getFirestore, collection, addDoc, onSnapshot,
+  getFirestore, collection, addDoc, getDocs, onSnapshot, query, where, orderBy,
+  // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { app } from './config.js';
 
@@ -17,22 +17,28 @@ export const posts = (data) => addDoc(dbRef, data)
     console.log(error);
   });
 
-/* getDocs(dbRef)
-  .then((snapshot) => {
-    const post = [];
-    snapshot.docs.array.forEach((doc) => {
-      post.push({ ...doc.data(), id: doc.id });
-    });
-    console.log(post);
-  })
-  .catch((err) => {
-    console.log(err.message);
-  }); */
+//queries
+const q = query(dbRef, orderBy('createdAt', 'desc'));
 
-onSnapshot(dbRef, (snapshot) => {
-  const newstler = [];
-  snapshot.forEach((doc) => {
-    newstler.push({ ...doc.data(), id: doc.id });
+export const onGetPost = (callback) => onSnapshot (q, callback);
+
+
+/*export const newPosts = () => {
+  onSnapshot(q, (snapshot) => { // onSnapshot(dbRef, (snapshot) => {
+    let novedades = [];
+    snapshot.forEach((doc) => {
+      novedades.push({ ...doc.data(), id: doc.id }); // id: doc.id
+        });
+    console.log(novedades);
   });
-  console.log(newstler);
-});
+};
+newPosts();
+
+// obtener post
+// export const getPost = () => dbRef.get();
+//   const querySnapshot = await getDocs(collection(db, 'post'))
+//   querySnapshot.forEach((doc) => {
+//     console.log(doc.data());
+//   });
+// }
+  

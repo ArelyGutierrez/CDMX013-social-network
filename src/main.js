@@ -13,7 +13,7 @@ const routes = {
 };
 
 export const onNavigate = (pathname) => {
-  console.log(window.location.pathname);
+  // console.log(window.location.pathname);
   window.history.pushState(
     {},
     pathname,
@@ -23,9 +23,8 @@ export const onNavigate = (pathname) => {
   root.appendChild(routes[pathname]());
 };
 
-console.log(window.location.pathname);
+// console.log(window.location.pathname);
 const component = routes[window.location.pathname];
-
 
 window.onpopstate = () => {
   root.removeChild(root.firstChild);
