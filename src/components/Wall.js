@@ -1,7 +1,8 @@
-/* eslint-disable import/no-unresolved */
+// eslint-disable-next-line import/no-unresolved
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
 import { savePosts, onGetPosts } from '../lib/store.js';
+import { user } from '../lib/auth.js';
 
 export const Wall = () => {
   const div = document.createElement('div');
@@ -21,12 +22,11 @@ export const Wall = () => {
 
   buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
   headerWall.src = './images/gorro.png'; // headerWall.src = './images/logochef.jpg';
-  greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
+  greeting.textContent = 'Hola 🖐🙋‍♀️';
   questionPost.textContent = '¿Quieres compartir algo?';
   inputPost.placeholder = 'Escribe aqui... ';
-  // buttonPost.textContent = 'Publicar';
   buttonPost.src = './images/send1.png';
-  errorMessagePost.textContent = ''; // si hay error lo despliega aquí
+  errorMessagePost.textContent = ''; // Si hay error lo despliega aquí
   newsWallTitle.textContent = 'Novedades';
   noNewsWall.textContent = 'No hay novedades por el momento';
 
@@ -52,40 +52,38 @@ export const Wall = () => {
     onNavigate('/');
   });
 
-  // const generatorHTMLnews = (allPostsReturned) => {
-  //   const oneNew = `<section id = 'novedad'>
-  //               <p> ${allPostsReturned.text}</p>
-  //               </section>`;
-  //   return oneNew;
-  // };
-
   buttonPost.addEventListener('click', () => {
     const data = {
+      email: user.email,
       text: inputPost.value,
       createdAt: serverTimestamp(),
-    }; // console.log(data);
+    }; console.log(data);
     savePosts(data);
-    // generatorHTMLnews(data);
   });
 
-  // let allPosts = [];
-  // let showingNews = [];
+  // Mostra publicaciones en muro
   onGetPosts((callback) => {
-    // allPosts = [];
+    while (noNewsWall.firstChild) {
+      noNewsWall.removeChild(noNewsWall.firstChild);
+    }
     callback.forEach((doc) => {
-      const post = doc.data();
-      // allPosts.push(post.text);
-      // showingNews += generatorHTMLnews(post);
+      const post = doc.data(); //
       const sectionAll = document.createElement('section');
       sectionAll.className = 'sectionAll';
+      const textTime = document.createElement('p');
+      textTime.className = 'textTime';
+      textTime.textContent = post.createdAt;
+      const textUser = document.createElement('p');
+      textUser.className = 'textUser';
+      textUser.textContent = post.email;
       const textPosts = document.createElement('p');
+      textPosts.className = 'textPosts';
       textPosts.textContent = post.text;
-      sectionAll.append(textPosts);
+      sectionAll.append(textTime, textUser, textPosts);
       noNewsWall.append(sectionAll);
     });
   });
 
-  // generatorHTML += oneNEw;
   containerBack.append(buttonBack, headerWall);
   divNewPost.append(inputPost, buttonPost);
   containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);

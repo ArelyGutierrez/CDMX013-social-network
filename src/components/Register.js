@@ -35,7 +35,7 @@ export const Register = () => {
   buttonBack.className = 'buttonBack'; /* containerBack.className = 'containerBack'; */
   headerRegister.className = 'headerRegister';
   title.className = 'titleRegister';
-  inputUser.className = 'inputRegister';
+  inputUser.className = 'inputUser';
   inputEmail.className = 'inputRegister';
   inputPass.className = 'inputRegister';
   errorMessageRegister.className = 'errorMessagesR'; // errores

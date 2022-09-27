@@ -1,7 +1,6 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable import/no-unresolved */
 import {
-  getFirestore, collection, addDoc, getDocs, onSnapshot, query, where, orderBy,
-  // eslint-disable-next-line import/no-unresolved
+  getFirestore, collection, addDoc, onSnapshot, query, orderBy,
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { app } from './config.js';
 
@@ -18,23 +17,7 @@ export const savePosts = (data) => addDoc(dbRef, data) // data-> texto (publicac
     console.log(error);
   });
 
-// queries
+// Data en tiempo real
 const q = query(dbRef, orderBy('createdAt', 'desc'));
 
 export const onGetPosts = (callback) => onSnapshot(q, callback);
-// export const newPosts = () => {
-//   onSnapshot(q, (snapshot) => { // onSnapshot(dbRef, (snapshot) => {
-//     const novedades = [];
-//     let novedadHTML = '';
-//     snapshot.forEach((doc) => {
-//       const prueba = doc.data();
-//       console.log(prueba.text);
-//       novedadHTML += `<section id = 'novedad'>
-//       <p> ${prueba.text}</p>
-//       </section>`;
-//       novedades.push({ prueba }); // id: doc.id
-//     });
-//     console.log(novedades);
-//     return novedadHTML; // containerNewsWall.innerHTML = novedadHTML;
-//   });
-// };

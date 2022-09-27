@@ -5,7 +5,7 @@ import {
 import { app } from './config.js';
 import { onNavigate } from '../main.js';
 
-const auth = getAuth();
+export const auth = getAuth();
 export const newUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 export const verify = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
@@ -79,4 +79,4 @@ export const verifyGitHub = () => signInWithPopup(auth, providerGithub)
   });
 
 // Obtén la información de perfil de un usuario de un proveedor específico
-const user = auth.currentUser;
+export const user = auth.currentUser;
