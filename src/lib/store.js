@@ -8,7 +8,7 @@ import { app } from './config.js';
 const db = getFirestore(app);
 const dbRef = collection(db, 'post');
 
-export const posts = (data) => addDoc(dbRef, data)
+export const savePosts = (data) => addDoc(dbRef, data)
   .then((docRef) => {
     console.log('Document has been added successfully');
   })

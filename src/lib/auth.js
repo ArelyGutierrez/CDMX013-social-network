@@ -5,7 +5,7 @@ import {
 import { app } from './config.js';
 import { onNavigate } from '../main.js';
 
-const auth = getAuth();
+export const auth = getAuth();
 export const newUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 export const verify = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
@@ -27,7 +27,6 @@ export const verifyG = () => signInWithPopup(auth, provider)
     const email = error.customData.email;
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
   });
 
 // Autenticación de Twitter
@@ -51,21 +50,18 @@ export const twitterUser = () => signInWithPopup(auth, providerTwitter)
     const email = error.customData.email;
     // The AuthCredential type that was used.
     const credential = TwitterAuthProvider.credentialFromError(error);
-    // ...
   });
 
-// //////////////Autenticación con GitHub////////////////
+// Autenticación con GitHub
 const providerGithub = new GithubAuthProvider(); // creando instancia del objeto del proveedor de GitHub
 export const verifyGitHub = () => signInWithPopup(auth, providerGithub)
   .then((result) => {
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-    // console.log(result); ////////////////////////////////////////////////////////////////////////
+    // console.log(result); //
     const credential = GithubAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
-
     // The signed-in user info.
     const user = result.user;
-    // ...
     onNavigate('/wall');
   }).catch((error) => {
     // Handle Errors here.
@@ -75,5 +71,4 @@ export const verifyGitHub = () => signInWithPopup(auth, providerGithub)
     const email = error.customData.email;
     // The AuthCredential type that was used.
     const credential = GithubAuthProvider.credentialFromError(error);
-    // ...
   });

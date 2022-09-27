@@ -1,4 +1,4 @@
-import { serverTimestamp} from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
+import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
 import { savePosts, onGetPosts } from '../lib/store.js';
 import { auth } from '../lib/auth.js';
@@ -21,13 +21,14 @@ export const Wall = () => {
 
   buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
   headerWall.src = './images/gorro.png'; // headerWall.src = './images/logochef.jpg';
-  greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
+  greeting.textContent = '¡Hola, bienvenido! 🖐';
   questionPost.textContent = '¿Quieres compartir algo?';
-  inputPost.placeholder ='Escribe aquí...';
+  inputPost.placeholder = 'Escribe aqui... ';
   buttonPost.src = './images/send1.png';
-  errorMessagePost.textContent = ''; // si hay error lo despliega aquí
+  errorMessagePost.textContent = ''; // Si hay error lo despliega aquí
   newsWallTitle.textContent = 'Novedades';
   noNewsWall.textContent = 'No hay novedades por el momento';
+
   containerBack.className = 'containerBack';
   containerContent.className = 'divCenterW';
   containerNewsWall.className = 'divCenterW';
@@ -51,37 +52,37 @@ export const Wall = () => {
   buttonPost.addEventListener('click', () => {
     const data = {
       text: inputPost.value,
-      email: auth.currentsUser.email,
+      email: auth.currentUser.email,
       createdAt: serverTimestamp(),
     }; console.log(data);
     savePosts(data);
   });
 
-  //Mostrar publicaciones en muro
-
-  onGetPosts ((callback)=> {
-    while (noNewsWall.firstChild){
-      noNewsWall.removeChild(noNewsWall.firstchild);
+  // Mostra publicaciones en muro
+  onGetPosts((callback) => {
+    while (noNewsWall.firstChild) {
+      noNewsWall.removeChild(noNewsWall.firstChild);
     }
     callback.forEach((doc) => {
       const post = doc.data();
       const sectionAll = document.createElement('section');
-      const textPost = document.createElement('p');
-      textPosts.className ='textPosts';
+      sectionAll.className = 'sectionAll';
+      const textPosts = document.createElement('p');
+      textPosts.className = 'textPosts';
       textPosts.textContent = post.text;
-      const userTitle = document.createElement ('h4');
-      userTitle.className = 'userTitle';
+      const userTitle = document.createElement('h4');
+      userTitle.className = 'usertitle';
       userTitle.textContent = post.email;
       const iconDelete = document.createElement('img');
       iconDelete.className = 'iconDelete';
       iconDelete.src = './images/iconBin.png';
-      sectionAll.append(userTitle, textPost, iconDelete);
+      sectionAll.append(userTitle, textPosts, iconDelete);
       noNewsWall.append(sectionAll);
     });
   });
 
   containerBack.append(buttonBack, headerWall);
-  divNewPost.append(inputPost, buttonPost, labelTitle);
+  divNewPost.append(inputPost, buttonPost);
   containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);
   containerNewsWall.append(newsWallTitle, noNewsWall);
   div.append(containerBack, containerContent, containerNewsWall);
