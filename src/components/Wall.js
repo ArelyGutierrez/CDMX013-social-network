@@ -1,6 +1,7 @@
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
-import { posts, onGetPosts } from '../lib/store.js';
+import { savePosts, onGetPosts } from '../lib/store.js';
+import { auth } from '../lib/auth.js';
 
 export const Wall = () => {
   const div = document.createElement('div');
@@ -20,7 +21,7 @@ export const Wall = () => {
 
   buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
   headerWall.src = './images/gorro.png'; // headerWall.src = './images/logochef.jpg';
-  greeting.textContent = 'Hola, Usuari@ 🖐🙋‍♀️';
+  greeting.textContent = '¡Hola, bienvenido! 🖐';
   questionPost.textContent = '¿Quieres compartir algo?';
   inputPost.placeholder = 'Escribe aqui... ';
   buttonPost.src = './images/send1.png';
@@ -51,13 +52,17 @@ export const Wall = () => {
   buttonPost.addEventListener('click', () => {
     const data = {
       text: inputPost.value,
+      email: auth.currentUser.email,
       createdAt: serverTimestamp(),
     }; console.log(data);
-    posts(data);
+    savePosts(data);
   });
 
   // Mostra publicaciones en muro
   onGetPosts((callback) => {
+    while (noNewsWall.firstChild) {
+      noNewsWall.removeChild(noNewsWall.firstChild);
+    }
     callback.forEach((doc) => {
       const post = doc.data();
       const sectionAll = document.createElement('section');
@@ -65,7 +70,14 @@ export const Wall = () => {
       const textPosts = document.createElement('p');
       textPosts.className = 'textPosts';
       textPosts.textContent = post.text;
-      noNewsWall.append(sectionAll, textPosts);
+      const userTitle = document.createElement('h4');
+      userTitle.className = 'usertitle';
+      userTitle.textContent = post.email;
+      const iconDelete = document.createElement('img');
+      iconDelete.className = 'iconDelete';
+      iconDelete.src = './images/iconBin.png';
+      sectionAll.append(userTitle, textPosts, iconDelete);
+      noNewsWall.append(sectionAll);
     });
   });
 

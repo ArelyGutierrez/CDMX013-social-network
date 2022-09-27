@@ -351,6 +351,8 @@ body {
     margin-top: 15px;
 } */
 .paragraphNoNewsWall {
+    display: flex;
+    flex-direction: column;
     width: 85vw;
     height: 50vh;
     border-radius: 10px;
@@ -373,4 +375,32 @@ body {
     margin-left: 8vw;
     left: 30%;
 }
+
+.sectionAll {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    background-color: #648ab1;
+    padding: 10px;
+    border-color: #0E0101;
+    margin: 20px;
+}
+
+.textPost{ 
+ color: #7ab46f;
+ padding: 20px;
+ 
+}
+
+.usertitle {
+    color: red;
+    
+}
+
+.iconDelete {
+    width: 20px;
+}
+
+
+
 
