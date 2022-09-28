@@ -46,6 +46,7 @@ export const Register = () => {
   hrefLogin.className = 'hrefLogin';
 
   inputPass.type = 'password';
+  const nameUser = inputUser;
 
   buttonRegisterL.addEventListener('click', () => {
     if (inputUser.value === '' || inputEmail.value === '' || inputPass.value === '') {
@@ -55,7 +56,8 @@ export const Register = () => {
         // Signed in
         onNavigate('/login');
         const user = userCredential.user;
-        // console.log(user);
+        // console.log(inputUser.value);
+        console.log(nameUser.value);
         // ...
       })
         .catch((error) => {

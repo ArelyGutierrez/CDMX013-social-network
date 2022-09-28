@@ -331,12 +331,12 @@ body {
 
 .paragraphWall{
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     left: 8vw;
 }
 .inputPost {
     width: 70vw;
-    height: 54px;
+    height: 60px;
     border-radius: 10px;
     border-color: #EBECFC; 
     font-family: 'Inter', sans-serif;
@@ -353,6 +353,7 @@ body {
 .paragraphNoNewsWall {
     display: flex;
     flex-direction: column;
+    overflow: scroll;
     width: 85vw;
     height: 50vh;
     border-radius: 10px;
@@ -364,7 +365,6 @@ body {
     background-color: #ffffff4d;
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    background-color: #EBECFC;
     color:rgba(0, 0, 0, 0.54);
     padding-top: 5vh;
     margin-left: 0px;
@@ -380,34 +380,65 @@ body {
 }
 
 .sectionAll {
-    height: 50px;
-    background-color: #648ab1;
+    /* height: 50px; */
+    background: rgba( 184, 233, 134, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
     padding: 10px;
     background: rgba(184, 233, 134, 0.3);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(3.5px);
-        -webkit-backdrop-filter: blur(3.5px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-color: #0E0101;
     margin: 20px;
 }
 
-.textPost{ 
- color: #7ab46f;
+.textPosts{ 
+ /* color: #7ab46f; */
  padding: 20px;
- 
+ font-family: 'Inter', sans-serif;
+ font-size: 18px;
 }
 
 .usertitle {
-    color: red;
-    
+    font: bolder;
+    color: #0E0101;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+}
+.iconSection1 {
+    display: flex;
+    flex-direction: row;
+}
+.iconDelete, .iconEdit {
+    width: 3vw;
+    height: 3vh;
+    justify-content: right;
+}
+.iconDelete{
+    margin-left: 85%;
+    margin-right: 5%;
+}
+ .iconLike, .iconComment {
+    width: 5vw;
+    height: 5vh;
+}
+.iconLike{
+    margin-left: 20%;
+}
+.counterLikes{
+    margin-right: 40%;
 }
 
-.iconDelete {
-    width: 20px;
+.iconSection {
+    display: flex;
+    flex-direction: row;
 }
-
 
 
 

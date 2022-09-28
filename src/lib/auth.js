@@ -72,3 +72,6 @@ export const verifyGitHub = () => signInWithPopup(auth, providerGithub)
     // The AuthCredential type that was used.
     const credential = GithubAuthProvider.credentialFromError(error);
   });
+
+// Obtén la información de perfil de un usuario de un proveedor específico
+export const user = auth.currentUser;

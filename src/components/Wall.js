@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
 import { savePosts, onGetPosts, deletePost } from '../lib/store.js';
@@ -8,7 +9,7 @@ export const Wall = () => {
   const containerBack = document.createElement('div');
   const buttonBack = document.createElement('img');
   const headerWall = document.createElement('img');
-  const containerContent = document.createElement('div');
+  const containerContent = document.createElement('form');
   const greeting = document.createElement('h2');
   const questionPost = document.createElement('p');
   const divNewPost = document.createElement('div');
@@ -31,7 +32,9 @@ export const Wall = () => {
 
   containerBack.className = 'containerBack';
   containerContent.className = 'divCenterW';
+  containerContent.id = 'newPostForm';
   containerNewsWall.className = 'divCenterW';
+  containerNewsWall.setAttribute('id', 'novedades');
   buttonBack.className = 'buttonBack';
   headerWall.className = 'headerWall';
   greeting.className = 'titlePost';
@@ -54,6 +57,7 @@ export const Wall = () => {
       text: inputPost.value,
       email: auth.currentUser.email,
       createdAt: serverTimestamp(),
+      date: Date.now(),
     }; console.log(data);
     savePosts(data);
     document.querySelector('.inputPost').value = '';
@@ -77,21 +81,48 @@ export const Wall = () => {
       const userTitle = document.createElement('h4');
       userTitle.className = 'usertitle';
       userTitle.textContent = post.email;
+      //  icon section 1 ///////////////////////////
+      const iconSection1 = document.createElement('div');
+      iconSection1.className = 'iconSection';
+      // Icono Editar
+      const iconEdit = document.createElement('img');
+      iconEdit.className = 'iconEdit';
+      iconEdit.src = './images/iconEdit.png';
       // Icono Borrar
       const iconDelete = document.createElement('img');
       iconDelete.className = 'iconDelete';
-      iconDelete.src = './images/iconBin.png';
+      //  icon section ///////////////////////////
+      const iconSection = document.createElement('div');
+      iconSection.className = 'iconSection';
+      // icono gustar
+      const iconLike = document.createElement('img');
+      const counterLikes = document.createElement('p');
+      iconLike.className = 'iconLike';
+      counterLikes.className = 'counterLikes';
+      iconLike.src = './images/iconLike.png';
+      counterLikes.textContent = '0';
 
-      sectionAll.append(userTitle, textPosts, iconDelete);
+      // icono comentar
+      const iconComment = document.createElement('img');
+      const counterComment = document.createElement('p');
+      iconComment.className = 'iconComment';
+      counterComment.className = 'counterLikes';
+      iconComment.src = './images/iconComments.png';
+      counterComment.textContent = '0';
+
+      iconSection1.append(iconDelete, iconEdit);
+      iconSection.append(iconLike, counterLikes, iconComment, counterComment);
+      sectionAll.append(iconSection1, userTitle, textPosts, iconSection);
       noNewsWall.append(sectionAll);
-      console.log(doc.id);
+      // console.log(doc.id);
 
       // Borrar publicaciones
-      iconDelete.addEventListener('click', () => {
-        if (post.email === auth.currentUser.email) {
+      if (post.email === auth.currentUser.email) {
+        iconDelete.src = './images/iconBin.png';
+        iconDelete.addEventListener('click', () => {
           deletePost(doc.id);
-        }
-      });
+        });
+      }
     });
   });
 
