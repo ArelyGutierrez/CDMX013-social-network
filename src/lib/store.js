@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/no-unresolved */
 import {
   getFirestore, collection, addDoc, onSnapshot, query, orderBy,
@@ -18,5 +19,6 @@ export const savePosts = (data) => addDoc(dbRef, data)
 
 // Data en tiempo real
 const q = query(dbRef, orderBy('createdAt', 'desc'));
-
 export const onGetPosts = (callback) => onSnapshot(q, callback);
+
+

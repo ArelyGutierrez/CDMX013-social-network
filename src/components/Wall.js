@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
 import { savePosts, onGetPosts } from '../lib/store.js';
@@ -8,7 +9,7 @@ export const Wall = () => {
   const containerBack = document.createElement('div');
   const buttonBack = document.createElement('img');
   const headerWall = document.createElement('img');
-  const containerContent = document.createElement('div');
+  const containerContent = document.createElement('form');
   const greeting = document.createElement('h2');
   const questionPost = document.createElement('p');
   const divNewPost = document.createElement('div');
@@ -31,7 +32,9 @@ export const Wall = () => {
 
   containerBack.className = 'containerBack';
   containerContent.className = 'divCenterW';
+  containerContent.id = 'newPostForm';
   containerNewsWall.className = 'divCenterW';
+  containerNewsWall.setAttribute('id', 'novedades');
   buttonBack.className = 'buttonBack';
   headerWall.className = 'headerWall';
   greeting.className = 'titlePost';
@@ -54,7 +57,8 @@ export const Wall = () => {
       text: inputPost.value,
       email: auth.currentUser.email,
       createdAt: serverTimestamp(),
-    }; console.log(data);
+    };
+    console.log(data);
     savePosts(data);
   });
 
@@ -76,7 +80,18 @@ export const Wall = () => {
       const iconDelete = document.createElement('img');
       iconDelete.className = 'iconDelete';
       iconDelete.src = './images/iconBin.png';
-      sectionAll.append(userTitle, textPosts, iconDelete);
+      //const iconlike = document.createElement('img');
+      //iconlike.className = 'like';
+      //iconlike.src = './images/like.png';
+
+      // borrar publicaciones
+      iconDelete.addEventListener('click', () => {
+        if (post.email === auth.currentUser.email) {
+          deletePost(doc.id);
+        }
+      });
+
+      sectionAll.append(userTitle, textPosts, iconDelete, iconlike);
       noNewsWall.append(sectionAll);
     });
   });
@@ -86,6 +101,5 @@ export const Wall = () => {
   containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);
   containerNewsWall.append(newsWallTitle, noNewsWall);
   div.append(containerBack, containerContent, containerNewsWall);
-
   return div;
 };
