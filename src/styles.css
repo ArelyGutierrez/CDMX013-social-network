@@ -351,6 +351,8 @@ body {
     margin-top: 15px;
 } */
 .paragraphNoNewsWall {
+    display: flex;
+    flex-direction: column;
     width: 85vw;
     height: 50vh;
     border-radius: 10px;
@@ -359,7 +361,9 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     line-height: 17px;
-    background-color: #EBECFC;
+    background-color: #ffffff4d;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     color:rgba(0, 0, 0, 0.54);
     padding-top: 5vh;
     margin-left: 0px;
@@ -374,13 +378,36 @@ body {
     left: 30%;
 }
 
-.sectionAll{
-
-width: 248px;
-height: 116px;
-left: 77px;
-top: 244px;
-background: #EBECFC;
-border-radius: 10px;
+.sectionAll {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    background: rgba( 184, 233, 134, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 10px;
+    border-color: #0E0101;
+    margin: 20px;
 }
+
+.textPost{ 
+ color: #7ab46f;
+ padding: 20px;
+ 
+}
+
+.usertitle {
+    color: red;
+    
+}
+
+.iconDelete {
+    width: 20px;
+}
+
+
+
 

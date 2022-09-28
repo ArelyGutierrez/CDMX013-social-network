@@ -2,7 +2,7 @@
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
 import { savePosts, onGetPosts } from '../lib/store.js';
-import { user } from '../lib/auth.js';
+import { auth } from '../lib/auth.js';
 
 export const Wall = () => {
   const div = document.createElement('div');
@@ -22,7 +22,7 @@ export const Wall = () => {
 
   buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
   headerWall.src = './images/gorro.png'; // headerWall.src = './images/logochef.jpg';
-  greeting.textContent = 'Hola 🖐🙋‍♀️';
+  greeting.textContent = '¡Hola, bienvenido! 🖐';
   questionPost.textContent = '¿Quieres compartir algo?';
   inputPost.placeholder = 'Escribe aqui... ';
   buttonPost.src = './images/send1.png';
@@ -54,9 +54,10 @@ export const Wall = () => {
 
   buttonPost.addEventListener('click', () => {
     const data = {
-      email: user.email,
       text: inputPost.value,
+      email: auth.currentUser.email,
       createdAt: serverTimestamp(),
+      date: Date.now(),
     }; console.log(data);
     savePosts(data);
   });
@@ -79,8 +80,15 @@ export const Wall = () => {
       const textPosts = document.createElement('p');
       textPosts.className = 'textPosts';
       textPosts.textContent = post.text;
-      sectionAll.append(textTime, textUser, textPosts);
+      const userTitle = document.createElement('h4');
+      userTitle.className = 'usertitle';
+      userTitle.textContent = post.email;
+      const iconDelete = document.createElement('img');
+      iconDelete.className = 'iconDelete';
+      iconDelete.src = './images/iconBin.png';
+      sectionAll.append(textTime, userTitle, textPosts, iconDelete);
       noNewsWall.append(sectionAll);
+      console.log(post.createdAt);
     });
   });
 
