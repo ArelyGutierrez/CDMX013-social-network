@@ -430,6 +430,12 @@ body {
 }
 .iconLike{
     margin-left: 20%;
+    transition: background-color .5s;
+}
+.iconLike:hover {
+    background-image: red;
+    font-size: 150%;
+    
 }
 .counterLikes{
     margin-right: 40%;
