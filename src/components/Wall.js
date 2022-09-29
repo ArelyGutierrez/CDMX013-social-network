@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { onNavigate } from '../main.js';
-import { savePosts, onGetPosts, deletePost } from '../lib/store.js';
+import {
+  savePosts, onGetPosts, deletePost, getPost, updatePost,
+} from '../lib/store.js';
 import { auth } from '../lib/auth.js';
 
 export const Wall = () => {
@@ -19,6 +21,9 @@ export const Wall = () => {
   const containerNewsWall = document.createElement('div');
   const newsWallTitle = document.createElement('h2');
   const noNewsWall = document.createElement('p');
+
+  let editStatus = false;
+  let id = '';
 
   buttonBack.src = './images/arrowBack.png'; //  buttonBack.textContent = '<';
   headerWall.src = './images/gorro.png'; // headerWall.src = './images/logochef.jpg';
@@ -59,7 +64,13 @@ export const Wall = () => {
       createdAt: serverTimestamp(),
       date: Date.now(),
     }; console.log(data);
-    savePosts(data);
+    if (!editStatus) { // agregado para considerar el editado de post
+      savePosts(data);
+    } else {
+      console.log('actualizando');
+      updatePost(id, { text: inputPost.value });
+      editStatus = false;
+    }
     document.querySelector('.inputPost').value = '';
   });
 
@@ -87,7 +98,6 @@ export const Wall = () => {
       // Icono Editar
       const iconEdit = document.createElement('img');
       iconEdit.className = 'iconEdit';
-      iconEdit.src = './images/iconEdit.png';
       // Icono Borrar
       const iconDelete = document.createElement('img');
       iconDelete.className = 'iconDelete';
@@ -116,11 +126,23 @@ export const Wall = () => {
       noNewsWall.append(sectionAll);
       // console.log(doc.id);
 
-      // Borrar publicaciones
+      // Solo mis publicaciones
       if (post.email === auth.currentUser.email) {
         iconDelete.src = './images/iconBin.png';
+        iconEdit.src = './images/iconEdit.png';
+        // Borrar publicaciones
         iconDelete.addEventListener('click', () => {
           deletePost(doc.id);
+        });
+        // Editar publicaciones
+        iconEdit.addEventListener('click', async (e) => {
+          const doc1 = await getPost(doc.id);
+          const postEdit = doc1.data();
+          console.log(postEdit);
+          inputPost.value = postEdit.text;
+          buttonPost.src = './images/iconUpdate.png';
+          editStatus = true;
+          id = doc.id;
         });
       }
     });
