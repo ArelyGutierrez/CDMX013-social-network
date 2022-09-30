@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/no-unresolved */
 import {
-  getFirestore, collection, addDoc, onSnapshot, query, orderBy, updateDoc, deleteDoc, doc,
+  getFirestore, collection, addDoc, onSnapshot, query, orderBy, updateDoc, deleteDoc, doc, getDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 import { app } from './config.js';
 
@@ -26,3 +26,9 @@ export const onGetPosts = (callback) => onSnapshot(q, callback);
 export const deletePost = (id) => {
   deleteDoc(doc(db, 'post', id));
 };
+// EDITAR POSTS ////////////////////////
+// Obtener una unica publicación para editar
+export const getPost = (id) => getDoc(doc(db, 'post', id));
+
+// actualizando datos
+export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);

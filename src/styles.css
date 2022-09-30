@@ -460,6 +460,12 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .iconLike{
     margin-left: 20%;
+    transition: background-color .5s;
+}
+.iconLike:hover {
+    background-image: red;
+    font-size: 150%;
+    
 }
 .counterLikes{
     margin-right: 40%;
