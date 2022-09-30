@@ -107,7 +107,7 @@ export const Wall = () => {
       const counterComment = document.createElement('p');
       iconComment.className = 'iconComment';
       counterComment.className = 'counterLikes';
-      iconComment.src = './images/iconComments.png';
+      iconComment.src = './images/iconComment.png';
       counterComment.textContent = '0';
 
       iconSection1.append(iconDelete, iconEdit);
