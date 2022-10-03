@@ -66,7 +66,9 @@ export const Wall = () => {
         email: auth.currentUser.email,
         createdAt: serverTimestamp(),
         date: Date.now(),
-      }; console.log(data);
+        likes: [],
+      };
+      console.log(data);
       if (!editStatus) { // agregado para considerar el editado de post
         savePosts(data);
       } else {
@@ -141,7 +143,7 @@ export const Wall = () => {
         });
         // Editar publicaciones
         iconEdit.addEventListener('click', async (e) => {
-          const doc1 = await getPost(doc.id);
+          const doc1 = await getPost(doc.id); // acceder al objeto que contiene identificadores
           const postEdit = doc1.data();
           console.log(postEdit);
           inputPost.value = postEdit.text;
@@ -151,11 +153,15 @@ export const Wall = () => {
         });
       }
 
-      // Likes
-      iconLike.addEventListener('click', () => {
-        let counterL = 0;
-        counterL += 1;
-        counterLikes.textContent = counterL;
+      // // Likes
+      //  iconLike.addEventListener('click', async (e) => {
+      //    const doc2 = await getPost(doc.id); // acceder al objeto que contiene identificador especifico
+      //    const likesEdit = doc2.data();
+      //    console.log(likesEdit);
+      // //   console.log(likesEdit.likes);
+      // //   // likesEdit.likes: addingLike,
+      // //   counterLikes.value = likesEdit + 1;
+      // //   updatePost(id, { likes: counterLikes.value });
       });
     });
   });

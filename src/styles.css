@@ -416,9 +416,13 @@ body {
     flex-direction: row;
 }
 .iconDelete, .iconEdit {
-    width: 3vw;
+    /* width: 3vw; */
     height: 3vh;
     justify-content: right;
+   
+}
+img{
+    border: solid transparent;
 }
 .iconDelete{
     margin-left: 85%;
