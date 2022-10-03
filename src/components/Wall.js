@@ -66,9 +66,9 @@ export const Wall = () => {
         email: auth.currentUser.email,
         createdAt: serverTimestamp(),
         date: Date.now(),
-        likes: [],
+        likes: 8,
       };
-      console.log(data);
+      // console.log(data);
       if (!editStatus) { // agregado para considerar el editado de post
         savePosts(data);
       } else {
@@ -124,7 +124,7 @@ export const Wall = () => {
       const counterComment = document.createElement('p');
       iconComment.className = 'iconComment';
       counterComment.className = 'counterLikes';
-      iconComment.src = './images/iconComments.png';
+      iconComment.src = './images/iconComment.png';
       counterComment.textContent = '0';
 
       iconSection1.append(iconDelete, iconEdit);
@@ -135,7 +135,7 @@ export const Wall = () => {
 
       // Solo mis publicaciones
       if (post.email === auth.currentUser.email) {
-        iconDelete.src = './images/iconBin.png';
+        iconDelete.src = './images/iconDelete.png';
         iconEdit.src = './images/iconEdit.png';
         // Borrar publicaciones
         iconDelete.addEventListener('click', () => {
@@ -145,24 +145,23 @@ export const Wall = () => {
         iconEdit.addEventListener('click', async (e) => {
           const doc1 = await getPost(doc.id); // acceder al objeto que contiene identificadores
           const postEdit = doc1.data();
-          console.log(postEdit);
+          // console.log(postEdit);
           inputPost.value = postEdit.text;
           buttonPost.src = './images/iconUpdate.png';
           editStatus = true;
           id = doc.id;
         });
       }
-
-      // // Likes
-      //  iconLike.addEventListener('click', async (e) => {
-      //    const doc2 = await getPost(doc.id); // acceder al objeto que contiene identificador especifico
-      //    const likesEdit = doc2.data();
-      //    console.log(likesEdit);
-      // //   console.log(likesEdit.likes);
-      // //   // likesEdit.likes: addingLike,
-      // //   counterLikes.value = likesEdit + 1;
-      // //   updatePost(id, { likes: counterLikes.value });
-      // });
+      // Likes
+      iconLike.addEventListener('click', async (e) => {
+        const doc2 = await getPost(doc.id); // acceder al objeto que contiene identificador especifico
+        const likesEdit = doc2.data();
+        counterLikes.value = likesEdit.likes + 1;
+        counterLikes.textContent = counterLikes.value;
+        console.log(counterLikes.value);
+        // //   counterLikes.value = likesEdit + 1;
+        updatePost(id, { likes: counterLikes.value });
+      });
     });
   });
 
@@ -171,6 +170,5 @@ export const Wall = () => {
   containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);
   containerNewsWall.append(newsWallTitle, noNewsWall);
   div.append(containerBack, containerContent, containerNewsWall);
-
   return div;
 };

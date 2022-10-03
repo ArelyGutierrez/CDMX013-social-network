@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/no-unresolved */
 import {
   getFirestore, collection, addDoc, onSnapshot, query, orderBy, updateDoc, deleteDoc, doc, getDoc,
