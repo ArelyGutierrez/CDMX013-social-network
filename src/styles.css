@@ -341,13 +341,14 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 .headerWall{ 
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 19px;
+    font-size: 40px;
     /*align-items: center;*/
     padding-top: 3.5vh;
     /*justify-content: center;*/
-    width: 50px;
+    width: 70px;
     margin-left: 50vw;
+    margin-top: 5%;
+    transform:translate(-50%, -50%);
 }
 .titlePost {
     font-family: 'Inter', sans-serif;
@@ -370,7 +371,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     border-radius: 10px;
     border-color: #EBECFC; 
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 17px;
     background: rgba( 82, 146, 109, 0.65 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -378,7 +379,7 @@ backdrop-filter: blur( 12px );
 -webkit-backdrop-filter: blur( 12px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
-    color: white;
+    color: black;
 }
 /* .buttonPost{
     width: 15vw;
@@ -425,7 +426,7 @@ backdrop-filter: blur( 12px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
     margin: 20px;
-    color: white;
+    color: black;
 }
 
 .textPosts{ 
@@ -437,7 +438,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 .usertitle {
     font: bolder;
-    color: white;
+    color: black;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
 }
@@ -446,26 +447,21 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     flex-direction: row;
 }
 .iconDelete, .iconEdit {
-    width: 3vw;
+    /*width: 3vw;*/
     height: 3vh;
     justify-content: right;
 }
 .iconDelete{
-    margin-left: 85%;
-    margin-right: 5%;
+    margin-left: 80%;
+    margin-right: 2%;
 }
- .iconLike, .iconComment {
+.iconLike, .iconComment {
     width: 5vw;
     height: 5vh;
 }
 .iconLike{
     margin-left: 20%;
-    transition: background-color .5s;
-}
-.iconLike:hover {
-    background-image: red;
-    font-size: 150%;
-    
+    transition: all .5s;
 }
 .counterLikes{
     margin-right: 40%;
@@ -478,7 +474,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 .iconLike:hover{
     background-color: pink;
-    box-shadow: 0 0 20px pink;
+    box-shadow: 0 0 20px greenyellow;
+}
+.iconEdit:hover{
+    background-color: white;
+    box-shadow: 0 0 20px greenyellow;
 }
 
 

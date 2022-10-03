@@ -133,7 +133,7 @@ export const Wall = () => {
 
       // Solo mis publicaciones
       if (post.email === auth.currentUser.email) {
-        iconDelete.src = './images/iconBin.png';
+        iconDelete.src = './images/iconDelete.png';
         iconEdit.src = './images/iconEdit.png';
         // Borrar publicaciones
         iconDelete.addEventListener('click', () => {
