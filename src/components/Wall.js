@@ -66,7 +66,7 @@ export const Wall = () => {
         email: auth.currentUser.email,
         createdAt: serverTimestamp(),
         date: Date.now(),
-        likes: 8,
+        likes: 0,
       };
       // console.log(data);
       if (!editStatus) { // agregado para considerar el editado de post
@@ -117,7 +117,7 @@ export const Wall = () => {
       iconLike.className = 'iconLike';
       counterLikes.className = 'counterLikes';
       iconLike.src = './images/iconLike.png';
-      counterLikes.textContent = '0';
+      counterLikes.textContent = 0;
 
       // icono comentar
       const iconComment = document.createElement('img');
@@ -160,7 +160,7 @@ export const Wall = () => {
         counterLikes.textContent = counterLikes.value;
         console.log(counterLikes.value);
         // //   counterLikes.value = likesEdit + 1;
-        updatePost(id, { likes: counterLikes.value });
+        updatePost(doc.id, { likes: counterLikes.value });
       });
     });
   });
