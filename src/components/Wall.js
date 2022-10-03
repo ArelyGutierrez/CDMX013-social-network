@@ -162,7 +162,7 @@ export const Wall = () => {
       // //   // likesEdit.likes: addingLike,
       // //   counterLikes.value = likesEdit + 1;
       // //   updatePost(id, { likes: counterLikes.value });
-      });
+      // });
     });
   });
 
