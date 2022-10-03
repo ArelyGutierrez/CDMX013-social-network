@@ -122,7 +122,7 @@ export const Wall = () => {
       const counterComment = document.createElement('p');
       iconComment.className = 'iconComment';
       counterComment.className = 'counterLikes';
-      iconComment.src = './images/iconComments.png';
+      iconComment.src = './images/iconComment.png';
       counterComment.textContent = '0';
 
       iconSection1.append(iconDelete, iconEdit);
@@ -133,7 +133,7 @@ export const Wall = () => {
 
       // Solo mis publicaciones
       if (post.email === auth.currentUser.email) {
-        iconDelete.src = './images/iconBin.png';
+        iconDelete.src = './images/iconDelete.png';
         iconEdit.src = './images/iconEdit.png';
         // Borrar publicaciones
         iconDelete.addEventListener('click', () => {
@@ -165,6 +165,5 @@ export const Wall = () => {
   containerContent.append(greeting, questionPost, divNewPost, errorMessagePost);
   containerNewsWall.append(newsWallTitle, noNewsWall);
   div.append(containerBack, containerContent, containerNewsWall);
-
   return div;
 };
