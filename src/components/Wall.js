@@ -64,7 +64,8 @@ export const Wall = () => {
     } else {
       const data = {
         text: inputPost.value,
-        email: auth.currentUser.email,
+        email: auth.currentUser.email ? auth.currentUser.email : auth.currentUser.displayName,
+        uid: auth.currentUser.uid,
         createdAt: serverTimestamp(),
         date: Date.now(),
         likes: 0,
@@ -100,6 +101,7 @@ export const Wall = () => {
       const userTitle = document.createElement('h4');
       userTitle.className = 'usertitle';
       userTitle.textContent = post.email;
+
       //  icon section 1 ///////////////////////////
       const iconSection1 = document.createElement('div');
       iconSection1.className = 'iconSection';
@@ -135,7 +137,7 @@ export const Wall = () => {
       // console.log(doc.id);
 
       // Solo mis publicaciones
-      if (post.email === auth.currentUser.email) {
+      if (post.uid === auth.currentUser.uid) {
         iconDelete.src = './images/iconDelete.png';
         iconEdit.src = './images/iconEdit.png';
         // Borrar publicaciones
