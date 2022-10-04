@@ -183,4 +183,4 @@ export const Wall = () => {
   containerNewsWall.append(newsWallTitle, noNewsWall);
   div.append(containerBack, containerContent, containerNewsWall);
   return div;
-};
+}; // segundo push
