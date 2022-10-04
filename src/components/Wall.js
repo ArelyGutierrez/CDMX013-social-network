@@ -73,7 +73,7 @@ export const Wall = () => {
       if (!editStatus) { // agregado para considerar el editado de post
         savePosts(data);
       } else {
-        console.log('actualizando');
+        // console.log('actualizando');
         updatePost(id, { text: inputPost.value });
         editStatus = false;
         buttonPost.src = './images/send1.png';
@@ -118,7 +118,7 @@ export const Wall = () => {
       iconLike.className = 'iconLike';
       counterLikes.className = 'counterLikes';
       iconLike.src = './images/iconLike.png';
-      counterLikes.textContent = 0;
+      counterLikes.textContent = post.likes;
 
       // icono comentar
       const iconComment = document.createElement('img');
@@ -167,10 +167,10 @@ export const Wall = () => {
           counterLikes.value = likesEdit.likes - 1;
           counterLikes.textContent = counterLikes.value;
           console.log(counterLikes.value);
-          // //   counterLikes.value = likesEdit + 1;
           updatePost(doc.id, { likes: counterLikes.value });
           bandera = 0;
         }
+        // counterLikes.textContent = counterLikes.value;
       });
     });
   });
