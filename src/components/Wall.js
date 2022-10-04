@@ -64,7 +64,7 @@ export const Wall = () => {
     } else {
       const data = {
         text: inputPost.value,
-        email: auth.currentUser.email ? auth.currentUser.email : auth.currentUser.displayName,
+        email: auth.currentUser.displayName ? auth.currentUser.displayName : auth.currentUser.email,
         uid: auth.currentUser.uid,
         createdAt: serverTimestamp(),
         date: Date.now(),
@@ -138,6 +138,7 @@ export const Wall = () => {
 
       // Solo mis publicaciones
       if (post.uid === auth.currentUser.uid) {
+        console.log(auth.currentUser);
         iconDelete.src = './images/iconDelete.png';
         iconEdit.src = './images/iconEdit.png';
         // Borrar publicaciones
@@ -172,7 +173,6 @@ export const Wall = () => {
           updatePost(doc.id, { likes: counterLikes.value });
           bandera = 0;
         }
-        // counterLikes.textContent = counterLikes.value;
       });
     });
   });
